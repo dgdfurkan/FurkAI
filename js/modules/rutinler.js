@@ -23,6 +23,8 @@ class RutinlerModule {
       if (!this.rutinler || this.rutinler.length === 0) {
         console.log('Rutin bulunamadı, default rutinler oluşturuluyor...');
         await this.createDefaultRutinler();
+      } else {
+        console.log('Mevcut rutinler yüklendi:', this.rutinler.length);
       }
       
       this.isInitialized = true;
@@ -33,6 +35,14 @@ class RutinlerModule {
   }
 
   async createDefaultRutinler() {
+    // Eğer zaten default rutinler varsa, tekrar ekleme
+    const existingRutinler = await window.DataManager.getAll('rutinler') || [];
+    if (existingRutinler.length > 0) {
+      console.log('Default rutinler zaten mevcut, tekrar eklenmiyor');
+      this.rutinler = existingRutinler;
+      return;
+    }
+
     const defaultRutinler = [
       {
         id: 'yemek-rutini',
