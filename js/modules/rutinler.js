@@ -11,6 +11,12 @@ class RutinlerModule {
   }
 
   async init() {
+    // Eğer zaten başlatıldıysa tekrar başlatma
+    if (this.isInitialized) {
+      console.log('Rutinler modülü zaten başlatılmış');
+      return;
+    }
+    
     console.log('Rutinler modülü başlatılıyor...');
     
     try {
@@ -163,12 +169,25 @@ class RutinlerModule {
     }
   }
 
-  render() {
+  async loadRutinler() {
+    try {
+      this.rutinler = await window.DataManager.getAll('rutinler') || [];
+      console.log('Rutinler yüklendi:', this.rutinler.length);
+    } catch (error) {
+      console.error('Rutinler yüklenemedi:', error);
+      this.rutinler = [];
+    }
+  }
+
+  async render() {
     const content = document.getElementById('page-content');
     if (!content) {
       console.error('page-content elementi bulunamadı, Rutinler modülü render edilemiyor');
       return;
     }
+
+    // Rutinleri tekrar yükle (sayfa değişince)
+    await this.loadRutinler();
 
     try {
       content.innerHTML = `
