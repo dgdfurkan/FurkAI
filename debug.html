@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurkAI - Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1b23;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .debug-section {
+            background-color: #2d2e3a;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .error { color: #f44336; }
+        .success { color: #4caf50; }
+        .warning { color: #ff9800; }
+    </style>
+</head>
+<body>
+    <h1>🔍 FurkAI Debug Sayfası</h1>
+    
+    <div class="debug-section">
+        <h2>JavaScript Dosya Yükleme Durumu</h2>
+        <div id="js-status"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>CSS Dosya Yükleme Durumu</h2>
+        <div id="css-status"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>Tarayıcı Desteği</h2>
+        <div id="browser-support"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>Konsol Hataları</h2>
+        <div id="console-errors"></div>
+    </div>
+
+    <script>
+        // Konsol hatalarını yakala
+        const originalError = console.error;
+        const errors = [];
+        
+        console.error = function(...args) {
+            errors.push(args.join(' '));
+            originalError.apply(console, args);
+        };
+
+        // JavaScript dosyalarını test et
+        function testJSFile(src) {
+            return new Promise((resolve) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = () => resolve({ src, status: 'success' });
+                script.onerror = () => resolve({ src, status: 'error' });
+                document.head.appendChild(script);
+            });
+        }
+
+        // CSS dosyalarını test et
+        function testCSSFile(href) {
+            return new Promise((resolve) => {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = href;
+                link.onload = () => resolve({ href, status: 'success' });
+                link.onerror = () => resolve({ href, status: 'error' });
+                document.head.appendChild(link);
+            });
+        }
+
+        // Test dosyaları
+        const jsFiles = [
+            'js/core/event-system.js',
+            'js/core/data-manager.js',
+            'js/core/module-manager.js',
+            'js/core/notification-manager.js',
+            'js/core/ai-service.js',
+            'js/modules/yemek.js',
+            'js/modules/spor.js',
+            'js/modules/namaz.js',
+            'js/modules/ezber.js',
+            'js/modules/zincir.js',
+            'js/modules/todo.js',
+            'js/app.js'
+        ];
+
+        const cssFiles = [
+            'css/design-system.css',
+            'css/components.css',
+            'css/modules.css',
+            'css/app.css'
+        ];
+
+        // Testleri çalıştır
+        async function runTests() {
+            // JavaScript dosyalarını test et
+            const jsStatus = document.getElementById('js-status');
+            for (const file of jsFiles) {
+                const result = await testJSFile(file);
+                const statusClass = result.status === 'success' ? 'success' : 'error';
+                jsStatus.innerHTML += `<div class="${statusClass}">${result.status === 'success' ? '✅' : '❌'} ${file}</div>`;
+            }
+
+            // CSS dosyalarını test et
+            const cssStatus = document.getElementById('css-status');
+            for (const file of cssFiles) {
+                const result = await testCSSFile(file);
+                const statusClass = result.status === 'success' ? 'success' : 'error';
+                cssStatus.innerHTML += `<div class="${statusClass}">${result.status === 'success' ? '✅' : '❌'} ${file}</div>`;
+            }
+
+            // Tarayıcı desteğini test et
+            const browserSupport = document.getElementById('browser-support');
+            const features = [
+                { name: 'IndexedDB', supported: 'indexedDB' in window },
+                { name: 'Service Worker', supported: 'serviceWorker' in navigator },
+                { name: 'Notifications', supported: 'Notification' in window },
+                { name: 'Fetch API', supported: 'fetch' in window },
+                { name: 'ES6 Classes', supported: typeof class {} === 'function' },
+                { name: 'CSS Custom Properties', supported: CSS.supports('color', 'var(--test)') }
+            ];
+
+            features.forEach(feature => {
+                const statusClass = feature.supported ? 'success' : 'error';
+                browserSupport.innerHTML += `<div class="${statusClass}">${feature.supported ? '✅' : '❌'} ${feature.name}</div>`;
+            });
+
+            // Konsol hatalarını göster
+            const consoleErrors = document.getElementById('console-errors');
+            if (errors.length > 0) {
+                errors.forEach(error => {
+                    consoleErrors.innerHTML += `<div class="error">❌ ${error}</div>`;
+                });
+            } else {
+                consoleErrors.innerHTML = '<div class="success">✅ Konsol hatası yok</div>';
+            }
+
+            // Global değişkenleri kontrol et
+            setTimeout(() => {
+                const globals = [
+                    'EventSystem',
+                    'DataManager', 
+                    'ModuleManager',
+                    'NotificationManager',
+                    'AIService',
+                    'FurkAIApp'
+                ];
+
+                consoleErrors.innerHTML += '<h3>Global Değişkenler:</h3>';
+                globals.forEach(global => {
+                    const exists = typeof window[global] !== 'undefined';
+                    const statusClass = exists ? 'success' : 'error';
+                    consoleErrors.innerHTML += `<div class="${statusClass}">${exists ? '✅' : '❌'} window.${global}</div>`;
+                });
+            }, 1000);
+        }
+
+        // Sayfa yüklendiğinde testleri çalıştır
+        window.addEventListener('load', runTests);
+    </script>
+</body>
+</html>

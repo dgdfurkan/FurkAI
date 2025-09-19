@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurkAI - Test Sayfası</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1b23;
+            color: #ffffff;
+        }
+        .test-section {
+            background-color: #2d2e3a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .test-button {
+            background-color: #4fc3f7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background-color: #9c27b0;
+        }
+        .test-result {
+            background-color: #3a3b47;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: monospace;
+        }
+        .success { color: #4caf50; }
+        .error { color: #f44336; }
+        .warning { color: #ff9800; }
+    </style>
+</head>
+<body>
+    <h1>🧪 FurkAI Test Sayfası</h1>
+    
+    <div class="test-section">
+        <h2>📱 PWA Testleri</h2>
+        <button class="test-button" onclick="testServiceWorker()">Service Worker Test</button>
+        <button class="test-button" onclick="testManifest()">Manifest Test</button>
+        <button class="test-button" onclick="testNotifications()">Bildirim Test</button>
+        <div id="pwa-results" class="test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>💾 Veri Yönetimi Testleri</h2>
+        <button class="test-button" onclick="testIndexedDB()">IndexedDB Test</button>
+        <button class="test-button" onclick="testDataManager()">Data Manager Test</button>
+        <button class="test-button" onclick="testDataExport()">Veri Dışa Aktarım</button>
+        <div id="data-results" class="test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🤖 AI Servis Testleri</h2>
+        <button class="test-button" onclick="testAIService()">AI Servis Test</button>
+        <button class="test-button" onclick="testAPIKey()">API Anahtarı Test</button>
+        <div id="ai-results" class="test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>📊 Modül Testleri</h2>
+        <button class="test-button" onclick="testModules()">Modül Yükleme</button>
+        <button class="test-button" onclick="testEventSystem()">Olay Sistemi</button>
+        <div id="module-results" class="test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🎨 UI Testleri</h2>
+        <button class="test-button" onclick="testTheme()">Tema Değiştir</button>
+        <button class="test-button" onclick="testResponsive()">Responsive Test</button>
+        <div id="ui-results" class="test-result"></div>
+    </div>
+
+    <script>
+        // Test fonksiyonları
+        function testServiceWorker() {
+            const results = document.getElementById('pwa-results');
+            if ('serviceWorker' in navigator) {
+                results.innerHTML = '<span class="success">✅ Service Worker destekleniyor</span>';
+            } else {
+                results.innerHTML = '<span class="error">❌ Service Worker desteklenmiyor</span>';
+            }
+        }
+
+        function testManifest() {
+            const results = document.getElementById('pwa-results');
+            fetch('/manifest.json')
+                .then(response => response.json())
+                .then(manifest => {
+                    results.innerHTML += '<br><span class="success">✅ Manifest yüklendi: ' + manifest.name + '</span>';
+                })
+                .catch(error => {
+                    results.innerHTML += '<br><span class="error">❌ Manifest yüklenemedi: ' + error.message + '</span>';
+                });
+        }
+
+        function testNotifications() {
+            const results = document.getElementById('pwa-results');
+            if ('Notification' in window) {
+                results.innerHTML += '<br><span class="success">✅ Bildirimler destekleniyor</span>';
+                Notification.requestPermission().then(permission => {
+                    results.innerHTML += '<br><span class="warning">⚠️ Bildirim izni: ' + permission + '</span>';
+                });
+            } else {
+                results.innerHTML += '<br><span class="error">❌ Bildirimler desteklenmiyor</span>';
+            }
+        }
+
+        function testIndexedDB() {
+            const results = document.getElementById('data-results');
+            if ('indexedDB' in window) {
+                results.innerHTML = '<span class="success">✅ IndexedDB destekleniyor</span>';
+            } else {
+                results.innerHTML = '<span class="error">❌ IndexedDB desteklenmiyor</span>';
+            }
+        }
+
+        function testDataManager() {
+            const results = document.getElementById('data-results');
+            // DataManager test edilecek
+            results.innerHTML += '<br><span class="warning">⚠️ DataManager test edilecek</span>';
+        }
+
+        function testDataExport() {
+            const results = document.getElementById('data-results');
+            // Veri dışa aktarım test edilecek
+            results.innerHTML += '<br><span class="warning">⚠️ Veri dışa aktarım test edilecek</span>';
+        }
+
+        function testAIService() {
+            const results = document.getElementById('ai-results');
+            if (window.AIService) {
+                results.innerHTML = '<span class="success">✅ AI Servis yüklendi</span>';
+            } else {
+                results.innerHTML = '<span class="error">❌ AI Servis yüklenemedi</span>';
+            }
+        }
+
+        function testAPIKey() {
+            const results = document.getElementById('ai-results');
+            const apiKey = localStorage.getItem('openai_key');
+            if (apiKey) {
+                results.innerHTML += '<br><span class="success">✅ API anahtarı bulundu</span>';
+            } else {
+                results.innerHTML += '<br><span class="warning">⚠️ API anahtarı bulunamadı</span>';
+            }
+        }
+
+        function testModules() {
+            const results = document.getElementById('module-results');
+            if (window.ModuleManager) {
+                results.innerHTML = '<span class="success">✅ Modül Yöneticisi yüklendi</span>';
+                const modules = window.ModuleManager.getModules();
+                results.innerHTML += '<br><span class="success">📦 Modüller: ' + modules.join(', ') + '</span>';
+            } else {
+                results.innerHTML = '<span class="error">❌ Modül Yöneticisi yüklenemedi</span>';
+            }
+        }
+
+        function testEventSystem() {
+            const results = document.getElementById('module-results');
+            if (window.EventSystem) {
+                results.innerHTML += '<br><span class="success">✅ Olay Sistemi yüklendi</span>';
+            } else {
+                results.innerHTML += '<br><span class="error">❌ Olay Sistemi yüklenemedi</span>';
+            }
+        }
+
+        function testTheme() {
+            const results = document.getElementById('ui-results');
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            results.innerHTML = '<span class="success">✅ Tema değiştirildi: ' + newTheme + '</span>';
+        }
+
+        function testResponsive() {
+            const results = document.getElementById('ui-results');
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            results.innerHTML += '<br><span class="success">📱 Ekran boyutu: ' + width + 'x' + height + '</span>';
+        }
+
+        // Sayfa yüklendiğinde otomatik testler
+        window.addEventListener('load', () => {
+            console.log('🧪 FurkAI Test Sayfası yüklendi');
+            testServiceWorker();
+            testIndexedDB();
+            testAIService();
+            testModules();
+        });
+    </script>
+</body>
+</html>

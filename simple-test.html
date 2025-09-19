@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurkAI - Basit Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1b23;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background-color: #2d2e3a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .success { color: #4caf50; }
+        .error { color: #f44336; }
+        .warning { color: #ff9800; }
+        button {
+            background-color: #4fc3f7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #9c27b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 FurkAI Basit Test</h1>
+        
+        <div class="test-section">
+            <h2>JavaScript Dosya Yükleme Testi</h2>
+            <div id="js-test"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Global Değişkenler Testi</h2>
+            <div id="global-test"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Basit Uygulama Testi</h2>
+            <button onclick="testBasicApp()">Uygulamayı Test Et</button>
+            <div id="app-test"></div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript dosyalarını test et
+        function testJSFiles() {
+            const files = [
+                'js/core/event-system.js',
+                'js/core/data-manager.js',
+                'js/core/module-manager.js',
+                // 'js/core/notification-manager.js', // Geçici olarak devre dışı
+                'js/core/ai-service.js',
+                'js/app.js'
+            ];
+            
+            const testDiv = document.getElementById('js-test');
+            testDiv.innerHTML = '<p>JavaScript dosyaları yükleniyor...</p>';
+            
+            let loadedCount = 0;
+            const totalFiles = files.length;
+            
+            files.forEach(file => {
+                const script = document.createElement('script');
+                script.src = file;
+                script.onload = () => {
+                    loadedCount++;
+                    testDiv.innerHTML += `<div class="success">✅ ${file} yüklendi</div>`;
+                    
+                    if (loadedCount === totalFiles) {
+                        testDiv.innerHTML += `<div class="success"><strong>Tüm JavaScript dosyaları yüklendi!</strong></div>`;
+                        testGlobals();
+                    }
+                };
+                script.onerror = () => {
+                    testDiv.innerHTML += `<div class="error">❌ ${file} yüklenemedi</div>`;
+                };
+                document.head.appendChild(script);
+            });
+        }
+        
+        // Global değişkenleri test et
+        function testGlobals() {
+            const testDiv = document.getElementById('global-test');
+            const globals = [
+                'EventSystem',
+                'FurkAIEvents',
+                'DataManager',
+                'ModuleManager',
+                'NotificationManager',
+                'AIService',
+                'FurkAIApp'
+            ];
+            
+            testDiv.innerHTML = '<h3>Global Değişkenler:</h3>';
+            globals.forEach(global => {
+                const exists = typeof window[global] !== 'undefined';
+                const statusClass = exists ? 'success' : 'error';
+                testDiv.innerHTML += `<div class="${statusClass}">${exists ? '✅' : '❌'} window.${global}</div>`;
+            });
+        }
+        
+        // Basit uygulama testi
+        function testBasicApp() {
+            const testDiv = document.getElementById('app-test');
+            
+            try {
+                if (window.FurkAIApp) {
+                    testDiv.innerHTML = '<div class="success">✅ FurkAIApp bulundu</div>';
+                    
+                    // Basit başlatma testi
+                    const app = new FurkAIApp();
+                    testDiv.innerHTML += '<div class="success">✅ FurkAIApp instance oluşturuldu</div>';
+                    
+                    // DOM elementlerini kontrol et
+                    const loadingScreen = document.getElementById('loading-screen');
+                    const appContainer = document.getElementById('app');
+                    
+                    if (loadingScreen && appContainer) {
+                        testDiv.innerHTML += '<div class="success">✅ DOM elementleri bulundu</div>';
+                        
+                        // Basit init testi (hata yakalama ile)
+                        app.init().then(() => {
+                            testDiv.innerHTML += '<div class="success">✅ Uygulama başarıyla başlatıldı!</div>';
+                        }).catch(error => {
+                            testDiv.innerHTML += `<div class="error">❌ Uygulama başlatılamadı: ${error.message}</div>`;
+                        });
+                    } else {
+                        testDiv.innerHTML += '<div class="warning">⚠️ DOM elementleri bulunamadı (bu test sayfasında normal)</div>';
+                        testDiv.innerHTML += '<div class="success">✅ Ana sayfada test edin: <a href="index.html" style="color: #4fc3f7;">index.html</a></div>';
+                    }
+                } else {
+                    testDiv.innerHTML = '<div class="error">❌ FurkAIApp bulunamadı</div>';
+                }
+            } catch (error) {
+                testDiv.innerHTML = `<div class="error">❌ Test hatası: ${error.message}</div>`;
+            }
+        }
+        
+        // Sayfa yüklendiğinde testleri başlat
+        window.addEventListener('load', () => {
+            testJSFiles();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+{
+  "name": "furkai-pwa",
+  "version": "1.0.0",
+  "description": "FurkAI - Kişisel asistan PWA uygulaması: Yemek, Spor, Namaz, Ezber ve günlük işlerinizi tek yerde yönetin",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'PWA build completed'",
+    "test": "echo 'Open test.html in browser'",
+    "deploy": "echo 'Deploy to GitHub Pages'"
+  },
+  "keywords": [
+    "pwa",
+    "personal-assistant",
+    "meal-planning",
+    "fitness",
+    "prayer-times",
+    "memorization",
+    "habit-tracking",
+    "todo",
+    "calendar",
+    "ai",
+    "chatgpt",
+    "offline",
+    "mobile-first"
+  ],
+  "author": "Furkan Gündüz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/furkangunduz/FurkAI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/furkangunduz/FurkAI/issues"
+  },
+  "homepage": "https://furkangunduz.github.io/FurkAI/",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "iOS >= 12",
+    "Safari >= 12"
+  ],
+  "pwa": {
+    "name": "FurkAI - Kişisel Asistan",
+    "short_name": "FurkAI",
+    "description": "Yemek, Spor, Namaz, Ezber ve günlük işlerinizi tek yerde yönetin",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1a1b23",
+    "theme_color": "#1a1b23",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "tr"
+  },
+  "features": [
+    "🍽️ Yemek Modülü - Kiler, tarifler, haftalık plan, AI öneri",
+    "💪 Spor Modülü - Program, streak, ilerleme takibi",
+    "🕌 Namaz Modülü - Vakit planlama, hatırlatma",
+    "📖 Ezber Modülü - Spaced repetition sistemi",
+    "⛓️ Zincir Modülü - Alışkanlık takibi",
+    "✅ ToDo + Takvim - Gün/hafta/ay/yıl görünümleri",
+    "🤖 AI Entegrasyonu - ChatGPT ile kişiselleştirilmiş öneriler",
+    "📱 PWA Desteği - Offline çalışma, bildirimler",
+    "🔒 Veri Güvenliği - Tüm veriler cihazda saklanır"
+  ],
+  "tech-stack": [
+    "HTML5",
+    "CSS3 (Custom Properties, Grid, Flexbox)",
+    "Vanilla JavaScript (ES6+)",
+    "IndexedDB",
+    "Service Worker",
+    "Web App Manifest",
+    "Push Notifications",
+    "OpenAI API",
+    "SOLID Architecture",
+    "Event-Driven Architecture"
+  ]
+}
