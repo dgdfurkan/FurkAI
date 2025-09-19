@@ -6,7 +6,7 @@
 class DataManager {
   constructor() {
     this.dbName = 'FurkAI';
-    this.dbVersion = 1;
+    this.dbVersion = 2;
     this.db = null;
     this.stores = {
       yemek: 'yemek',
@@ -93,6 +93,15 @@ class DataManager {
       todoStore.createIndex('module', 'module', { unique: false });
       todoStore.createIndex('priority', 'priority', { unique: false });
       todoStore.createIndex('completed', 'completed', { unique: false });
+    }
+
+    // Rutinler store
+    if (!db.objectStoreNames.contains(this.stores.rutinler)) {
+      const rutinlerStore = db.createObjectStore(this.stores.rutinler, { keyPath: 'id', autoIncrement: true });
+      rutinlerStore.createIndex('category', 'category', { unique: false });
+      rutinlerStore.createIndex('frequency', 'frequency', { unique: false });
+      rutinlerStore.createIndex('isActive', 'isActive', { unique: false });
+      rutinlerStore.createIndex('createdAt', 'createdAt', { unique: false });
     }
 
     // Settings store
