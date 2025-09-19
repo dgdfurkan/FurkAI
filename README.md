@@ -153,8 +153,8 @@ Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosy
 ## 👨‍💻 Geliştirici
 
 **Furkan Gündüz**
-- GitHub: [@furkangunduz](https://github.com/furkangunduz)
-- Email: furkan@example.com
+- GitHub: [@dgdfurkan](https://github.com/dgdfurkan)
+- Email: furkangunduz.dev@gmail.com
 
 ## 🙏 Teşekkürler
 
