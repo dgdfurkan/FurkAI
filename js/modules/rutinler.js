@@ -884,3 +884,751 @@ window.RutinlerModule.openYemekRutini = function(rutin) {
     </div>
   `;
 };
+
+// Spor rutini detay sayfası
+window.RutinlerModule.openSporRutini = function(rutin) {
+  const content = document.getElementById('page-content');
+  if (!content) return;
+
+  content.innerHTML = `
+    <div class="rutin-detail-container">
+      <div class="rutin-detail-header">
+        <button class="btn btn-secondary" onclick="window.PageManager?.switchPage('routines')">
+          ← Geri
+        </button>
+        <h2>🏃‍♂️ ${rutin.name}</h2>
+        <div class="rutin-status-badge ${rutin.isActive ? 'active' : 'inactive'}">
+          ${rutin.isActive ? 'Aktif' : 'Pasif'}
+        </div>
+      </div>
+
+      <div class="rutin-detail-content">
+        <div class="dashboard-grid">
+          <!-- Bugünkü Egzersizler -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Bugünkü Egzersizler</h3>
+              <span class="card-icon">💪</span>
+            </div>
+            <div class="card-content">
+              <div class="exercise-list">
+                <div class="exercise-item">
+                  <span class="exercise-name">Koşu</span>
+                  <span class="exercise-duration">30 dk</span>
+                  <span class="exercise-status">✅</span>
+                </div>
+                <div class="exercise-item">
+                  <span class="exercise-name">Push-up</span>
+                  <span class="exercise-duration">3x15</span>
+                  <span class="exercise-status">⏰</span>
+                </div>
+                <div class="exercise-item">
+                  <span class="exercise-name">Plank</span>
+                  <span class="exercise-duration">2x60sn</span>
+                  <span class="exercise-status">⏰</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kalori Yakımı -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Kalori Yakımı</h3>
+              <span class="card-icon">🔥</span>
+            </div>
+            <div class="card-content">
+              <div class="calorie-burn">
+                <div class="calorie-circle">
+                  <span class="calorie-current">320</span>
+                  <span class="calorie-target">/ 500</span>
+                </div>
+                <div class="calorie-info">
+                  <p>Hedef: 500 kalori</p>
+                  <p>Kalan: 180 kalori</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Adım Sayacı -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Adım Sayacı</h3>
+              <span class="card-icon">👟</span>
+            </div>
+            <div class="card-content">
+              <div class="step-counter">
+                <div class="step-circle">
+                  <span class="step-current">7,250</span>
+                  <span class="step-target">/ 10,000</span>
+                </div>
+                <div class="step-info">
+                  <p>Hedef: 10,000 adım</p>
+                  <p>Kalan: 2,750 adım</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Haftalık İlerleme -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Haftalık İlerleme</h3>
+              <span class="card-icon">📊</span>
+            </div>
+            <div class="card-content">
+              <div class="weekly-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 75%"></div>
+                </div>
+                <div class="progress-stats">
+                  <div class="stat-item">
+                    <span class="stat-value">5</span>
+                    <span class="stat-label">Gün</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-value">7</span>
+                    <span class="stat-label">Hedef</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Motivasyon -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Motivasyon</h3>
+              <span class="card-icon">💪</span>
+            </div>
+            <div class="card-content">
+              <div class="motivation-quotes">
+                <div class="quote-item">
+                  <span class="quote-icon">💪</span>
+                  <span class="quote-text">"Her adım seni hedefine yaklaştırıyor!"</span>
+                </div>
+                <div class="quote-item">
+                  <span class="quote-icon">🏆</span>
+                  <span class="quote-text">"Bugün 7 günlük zincirin var!"</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spor Programı -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Spor Programı</h3>
+              <span class="card-icon">📅</span>
+            </div>
+            <div class="card-content">
+              <div class="workout-schedule">
+                <div class="schedule-item">
+                  <span class="schedule-day">Pazartesi</span>
+                  <span class="schedule-workout">Koşu + Kardiyo</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="schedule-day">Salı</span>
+                  <span class="schedule-workout">Güç Antrenmanı</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="schedule-day">Çarşamba</span>
+                  <span class="schedule-workout">Yoga + Esneklik</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="schedule-day">Perşembe</span>
+                  <span class="schedule-workout">Koşu + Kardiyo</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="schedule-day">Cuma</span>
+                  <span class="schedule-workout">Güç Antrenmanı</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="schedule-day">Cumartesi</span>
+                  <span class="schedule-workout">Aktif Dinlenme</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="schedule-day">Pazar</span>
+                  <span class="schedule-workout">Dinlenme</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rutin-actions">
+          <button class="btn btn-primary" onclick="window.RutinlerModule?.startWorkout()">
+            <span class="icon">▶️</span>
+            Antrenman Başlat
+          </button>
+          <button class="btn btn-secondary" onclick="window.RutinlerModule?.logExercise()">
+            <span class="icon">📝</span>
+            Egzersiz Kaydet
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
+// Namaz rutini detay sayfası
+window.RutinlerModule.openNamazRutini = function(rutin) {
+  const content = document.getElementById('page-content');
+  if (!content) return;
+
+  content.innerHTML = `
+    <div class="rutin-detail-container">
+      <div class="rutin-detail-header">
+        <button class="btn btn-secondary" onclick="window.PageManager?.switchPage('routines')">
+          ← Geri
+        </button>
+        <h2>🕌 ${rutin.name}</h2>
+        <div class="rutin-status-badge ${rutin.isActive ? 'active' : 'inactive'}">
+          ${rutin.isActive ? 'Aktif' : 'Pasif'}
+        </div>
+      </div>
+
+      <div class="rutin-detail-content">
+        <div class="dashboard-grid">
+          <!-- Namaz Vakitleri -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Bugünkü Namaz Vakitleri</h3>
+              <span class="card-icon">🕌</span>
+            </div>
+            <div class="card-content">
+              <div class="prayer-times">
+                <div class="prayer-item">
+                  <span class="prayer-name">Sabah</span>
+                  <span class="prayer-time">05:45</span>
+                  <span class="prayer-status">✅</span>
+                </div>
+                <div class="prayer-item">
+                  <span class="prayer-name">Öğle</span>
+                  <span class="prayer-time">12:30</span>
+                  <span class="prayer-status">⏰</span>
+                </div>
+                <div class="prayer-item">
+                  <span class="prayer-name">İkindi</span>
+                  <span class="prayer-time">15:45</span>
+                  <span class="prayer-status">⏰</span>
+                </div>
+                <div class="prayer-item">
+                  <span class="prayer-name">Akşam</span>
+                  <span class="prayer-time">18:15</span>
+                  <span class="prayer-status">⏰</span>
+                </div>
+                <div class="prayer-item">
+                  <span class="prayer-name">Yatsı</span>
+                  <span class="prayer-time">19:45</span>
+                  <span class="prayer-status">⏰</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Namaz Takibi -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Namaz Takibi</h3>
+              <span class="card-icon">📿</span>
+            </div>
+            <div class="card-content">
+              <div class="prayer-progress">
+                <div class="prayer-circle">
+                  <span class="prayer-current">1</span>
+                  <span class="prayer-target">/ 5</span>
+                </div>
+                <div class="prayer-info">
+                  <p>Bugün: 1/5 namaz</p>
+                  <p>Zincir: 7 gün</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kıble Yönü -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Kıble Yönü</h3>
+              <span class="card-icon">🧭</span>
+            </div>
+            <div class="card-content">
+              <div class="qibla-direction">
+                <div class="compass">
+                  <div class="compass-needle" style="transform: rotate(45deg);"></div>
+                  <div class="compass-label">Kıble</div>
+                </div>
+                <div class="direction-info">
+                  <p>Yön: Güneydoğu</p>
+                  <p>Açı: 45°</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hatırlatıcılar -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Hatırlatıcılar</h3>
+              <span class="card-icon">🔔</span>
+            </div>
+            <div class="card-content">
+              <div class="reminder-settings">
+                <div class="reminder-item">
+                  <span class="reminder-name">Namaz Vakti</span>
+                  <span class="reminder-status">✅</span>
+                </div>
+                <div class="reminder-item">
+                  <span class="reminder-name">5 Dakika Öncesi</span>
+                  <span class="reminder-status">✅</span>
+                </div>
+                <div class="reminder-item">
+                  <span class="reminder-name">Ezân</span>
+                  <span class="reminder-status">✅</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Haftalık İstatistik -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Haftalık İstatistik</h3>
+              <span class="card-icon">📊</span>
+            </div>
+            <div class="card-content">
+              <div class="weekly-stats">
+                <div class="stat-item">
+                  <span class="stat-value">35</span>
+                  <span class="stat-label">Namaz</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">100%</span>
+                  <span class="stat-label">Başarı</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">7</span>
+                  <span class="stat-label">Gün</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dua ve Zikir -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Dua ve Zikir</h3>
+              <span class="card-icon">📿</span>
+            </div>
+            <div class="card-content">
+              <div class="dua-list">
+                <div class="dua-item">
+                  <span class="dua-icon">🤲</span>
+                  <span class="dua-text">Sabah Duası</span>
+                </div>
+                <div class="dua-item">
+                  <span class="dua-icon">📿</span>
+                  <span class="dua-text">Tesbih (33x)</span>
+                </div>
+                <div class="dua-item">
+                  <span class="dua-icon">🤲</span>
+                  <span class="dua-text">Akşam Duası</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rutin-actions">
+          <button class="btn btn-primary" onclick="window.RutinlerModule?.markPrayerCompleted()">
+            <span class="icon">✅</span>
+            Namaz Kaydet
+          </button>
+          <button class="btn btn-secondary" onclick="window.RutinlerModule?.setReminder()">
+            <span class="icon">🔔</span>
+            Hatırlatıcı Ayarla
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
+// Ezber rutini detay sayfası (Diyanet sureleri)
+window.RutinlerModule.openEzberRutini = function(rutin) {
+  const content = document.getElementById('page-content');
+  if (!content) return;
+
+  content.innerHTML = `
+    <div class="rutin-detail-container">
+      <div class="rutin-detail-header">
+        <button class="btn btn-secondary" onclick="window.PageManager?.switchPage('routines')">
+          ← Geri
+        </button>
+        <h2>📚 ${rutin.name}</h2>
+        <div class="rutin-status-badge ${rutin.isActive ? 'active' : 'inactive'}">
+          ${rutin.isActive ? 'Aktif' : 'Pasif'}
+        </div>
+      </div>
+
+      <div class="rutin-detail-content">
+        <div class="dashboard-grid">
+          <!-- Bugünkü Ezber -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Bugünkü Ezber</h3>
+              <span class="card-icon">📖</span>
+            </div>
+            <div class="card-content">
+              <div class="memorization-list">
+                <div class="memorization-item">
+                  <span class="surah-name">Fatiha Suresi</span>
+                  <span class="memorization-status">✅</span>
+                </div>
+                <div class="memorization-item">
+                  <span class="surah-name">Bakara 1-5</span>
+                  <span class="memorization-status">⏰</span>
+                </div>
+                <div class="memorization-item">
+                  <span class="surah-name">İhlas Suresi</span>
+                  <span class="memorization-status">✅</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ezber İlerlemesi -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Ezber İlerlemesi</h3>
+              <span class="card-icon">📊</span>
+            </div>
+            <div class="card-content">
+              <div class="memorization-progress">
+                <div class="progress-circle">
+                  <span class="progress-current">15</span>
+                  <span class="progress-target">/ 30</span>
+                </div>
+                <div class="progress-info">
+                  <p>Ezberlenen: 15 sure</p>
+                  <p>Hedef: 30 sure</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sure Listesi -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Sure Listesi</h3>
+              <span class="card-icon">📋</span>
+            </div>
+            <div class="card-content">
+              <div class="surah-list">
+                <div class="surah-item">
+                  <span class="surah-number">1</span>
+                  <span class="surah-name">Fatiha</span>
+                  <span class="surah-status">✅</span>
+                </div>
+                <div class="surah-item">
+                  <span class="surah-number">2</span>
+                  <span class="surah-name">Bakara (1-5)</span>
+                  <span class="surah-status">⏰</span>
+                </div>
+                <div class="surah-item">
+                  <span class="surah-number">112</span>
+                  <span class="surah-name">İhlas</span>
+                  <span class="surah-status">✅</span>
+                </div>
+                <div class="surah-item">
+                  <span class="surah-number">113</span>
+                  <span class="surah-name">Felak</span>
+                  <span class="surah-status">⏰</span>
+                </div>
+                <div class="surah-item">
+                  <span class="surah-number">114</span>
+                  <span class="surah-name">Nas</span>
+                  <span class="surah-status">⏰</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ezber Tekrarı -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Ezber Tekrarı</h3>
+              <span class="card-icon">🔄</span>
+            </div>
+            <div class="card-content">
+              <div class="review-schedule">
+                <div class="review-item">
+                  <span class="review-day">Bugün</span>
+                  <span class="review-surah">Fatiha, İhlas</span>
+                </div>
+                <div class="review-item">
+                  <span class="review-day">Yarın</span>
+                  <span class="review-surah">Bakara 1-5</span>
+                </div>
+                <div class="review-item">
+                  <span class="review-day">Haftalık</span>
+                  <span class="review-surah">Tüm ezberler</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ezber İstatistikleri -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">İstatistikler</h3>
+              <span class="card-icon">📈</span>
+            </div>
+            <div class="card-content">
+              <div class="memorization-stats">
+                <div class="stat-item">
+                  <span class="stat-value">15</span>
+                  <span class="stat-label">Ezberlenen</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">7</span>
+                  <span class="stat-label">Gün</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">85%</span>
+                  <span class="stat-label">Başarı</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ezber Rehberi -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Ezber Rehberi</h3>
+              <span class="card-icon">💡</span>
+            </div>
+            <div class="card-content">
+              <div class="memorization-tips">
+                <div class="tip-item">
+                  <span class="tip-icon">🎯</span>
+                  <span class="tip-text">Günde 1-2 ayet ezberle</span>
+                </div>
+                <div class="tip-item">
+                  <span class="tip-icon">🔄</span>
+                  <span class="tip-text">Düzenli tekrar yap</span>
+                </div>
+                <div class="tip-item">
+                  <span class="tip-icon">📖</span>
+                  <span class="tip-text">Anlamını öğren</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rutin-actions">
+          <button class="btn btn-primary" onclick="window.RutinlerModule?.startMemorization()">
+            <span class="icon">▶️</span>
+            Ezber Başlat
+          </button>
+          <button class="btn btn-secondary" onclick="window.RutinlerModule?.reviewMemorization()">
+            <span class="icon">🔄</span>
+            Tekrar Yap
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
+// Zincir kırma rutini detay sayfası
+window.RutinlerModule.openZincirRutini = function(rutin) {
+  const content = document.getElementById('page-content');
+  if (!content) return;
+
+  content.innerHTML = `
+    <div class="rutin-detail-container">
+      <div class="rutin-detail-header">
+        <button class="btn btn-secondary" onclick="window.PageManager?.switchPage('routines')">
+          ← Geri
+        </button>
+        <h2>🔗 ${rutin.name}</h2>
+        <div class="rutin-status-badge ${rutin.isActive ? 'active' : 'inactive'}">
+          ${rutin.isActive ? 'Aktif' : 'Pasif'}
+        </div>
+      </div>
+
+      <div class="rutin-detail-content">
+        <div class="dashboard-grid">
+          <!-- Zincir Durumu -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Zincir Durumu</h3>
+              <span class="card-icon">🔗</span>
+            </div>
+            <div class="card-content">
+              <div class="chain-status">
+                <div class="chain-circle">
+                  <span class="chain-current">7</span>
+                  <span class="chain-target">Gün</span>
+                </div>
+                <div class="chain-info">
+                  <p>Mevcut Zincir: 7 gün</p>
+                  <p>En Uzun Zincir: 15 gün</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kötü Alışkanlıklar -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Kötü Alışkanlıklar</h3>
+              <span class="card-icon">🚫</span>
+            </div>
+            <div class="card-content">
+              <div class="bad-habits-list">
+                <div class="habit-item">
+                  <span class="habit-name">Sigara</span>
+                  <span class="habit-status">✅</span>
+                </div>
+                <div class="habit-item">
+                  <span class="habit-name">Sosyal Medya</span>
+                  <span class="habit-status">⏰</span>
+                </div>
+                <div class="habit-item">
+                  <span class="habit-name">Geç Yatma</span>
+                  <span class="habit-status">⏰</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Motivasyon -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Motivasyon</h3>
+              <span class="card-icon">💪</span>
+            </div>
+            <div class="card-content">
+              <div class="motivation-quotes">
+                <div class="quote-item">
+                  <span class="quote-icon">🎯</span>
+                  <span class="quote-text">"Her gün bir adım daha!"</span>
+                </div>
+                <div class="quote-item">
+                  <span class="quote-icon">🏆</span>
+                  <span class="quote-text">"7 günlük zincirin var!"</span>
+                </div>
+                <div class="quote-item">
+                  <span class="quote-icon">💎</span>
+                  <span class="quote-text">"Sen güçlüsün!"</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- İlerleme Grafiği -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Haftalık İlerleme</h3>
+              <span class="card-icon">📊</span>
+            </div>
+            <div class="card-content">
+              <div class="progress-chart">
+                <div class="chart-bars">
+                  <div class="chart-bar" style="height: 100%"></div>
+                  <div class="chart-bar" style="height: 100%"></div>
+                  <div class="chart-bar" style="height: 100%"></div>
+                  <div class="chart-bar" style="height: 100%"></div>
+                  <div class="chart-bar" style="height: 100%"></div>
+                  <div class="chart-bar" style="height: 100%"></div>
+                  <div class="chart-bar" style="height: 100%"></div>
+                </div>
+                <div class="chart-labels">
+                  <span>Pzt</span>
+                  <span>Sal</span>
+                  <span>Çar</span>
+                  <span>Per</span>
+                  <span>Cum</span>
+                  <span>Cmt</span>
+                  <span>Paz</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alternatif Aktiviteler -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Alternatif Aktiviteler</h3>
+              <span class="card-icon">🎯</span>
+            </div>
+            <div class="card-content">
+              <div class="alternative-activities">
+                <div class="activity-item">
+                  <span class="activity-icon">📚</span>
+                  <span class="activity-text">Kitap Oku</span>
+                </div>
+                <div class="activity-item">
+                  <span class="activity-icon">🏃‍♂️</span>
+                  <span class="activity-text">Yürüyüş Yap</span>
+                </div>
+                <div class="activity-item">
+                  <span class="activity-icon">🧘‍♂️</span>
+                  <span class="activity-text">Meditasyon</span>
+                </div>
+                <div class="activity-item">
+                  <span class="activity-icon">🎨</span>
+                  <span class="activity-text">Sanat Yap</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Başarı Rozetleri -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Başarı Rozetleri</h3>
+              <span class="card-icon">🏅</span>
+            </div>
+            <div class="card-content">
+              <div class="achievement-badges">
+                <div class="badge-item earned">
+                  <span class="badge-icon">🥉</span>
+                  <span class="badge-text">3 Gün</span>
+                </div>
+                <div class="badge-item earned">
+                  <span class="badge-icon">🥈</span>
+                  <span class="badge-text">7 Gün</span>
+                </div>
+                <div class="badge-item">
+                  <span class="badge-icon">🥇</span>
+                  <span class="badge-text">30 Gün</span>
+                </div>
+                <div class="badge-item">
+                  <span class="badge-icon">💎</span>
+                  <span class="badge-text">100 Gün</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rutin-actions">
+          <button class="btn btn-primary" onclick="window.RutinlerModule?.markDayCompleted()">
+            <span class="icon">✅</span>
+            Günü Tamamla
+          </button>
+          <button class="btn btn-secondary" onclick="window.RutinlerModule?.addAlternativeActivity()">
+            <span class="icon">➕</span>
+            Alternatif Ekle
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+};

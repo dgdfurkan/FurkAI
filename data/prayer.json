@@ -1,0 +1,114 @@
+{
+  "prayerTimes": {
+    "city": "İstanbul",
+    "coordinates": {
+      "lat": 41.0082,
+      "lng": 28.9784
+    },
+    "timezone": "Europe/Istanbul",
+    "method": "Diyanet İşleri Başkanlığı",
+    "today": {
+      "date": "2024-01-15",
+      "times": {
+        "imsak": "06:15",
+        "gunes": "07:45",
+        "ogle": "12:30",
+        "ikindi": "15:15",
+        "aksam": "17:45",
+        "yatsi": "19:15"
+      }
+    },
+    "weekly": [
+      {
+        "date": "2024-01-15",
+        "times": {
+          "imsak": "06:15",
+          "gunes": "07:45",
+          "ogle": "12:30",
+          "ikindi": "15:15",
+          "aksam": "17:45",
+          "yatsi": "19:15"
+        }
+      },
+      {
+        "date": "2024-01-16",
+        "times": {
+          "imsak": "06:14",
+          "gunes": "07:44",
+          "ogle": "12:30",
+          "ikindi": "15:16",
+          "aksam": "17:46",
+          "yatsi": "19:16"
+        }
+      }
+    ]
+  },
+  "qibla": {
+    "direction": "güneydoğu",
+    "angle": 45,
+    "compass": {
+      "north": 0,
+      "east": 90,
+      "south": 180,
+      "west": 270,
+      "qibla": 45
+    }
+  },
+  "duas": [
+    {
+      "id": 1,
+      "name": "Sabah Duası",
+      "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ",
+      "pronunciation": "Asbahna ve asbahal mulku lillah",
+      "turkish": "Sabaha erdik ve mülk Allah'ındır",
+      "category": "günlük",
+      "times": ["sabah"]
+    },
+    {
+      "id": 2,
+      "name": "Akşam Duası",
+      "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ",
+      "pronunciation": "Emsayna ve emsal mulku lillah",
+      "turkish": "Akşama erdik ve mülk Allah'ındır",
+      "category": "günlük",
+      "times": ["aksam"]
+    },
+    {
+      "id": 3,
+      "name": "Tesbih",
+      "arabic": "سُبْحَانَ اللَّهِ",
+      "pronunciation": "Subhanallah",
+      "turkish": "Allah'ı tenzih ederim",
+      "category": "zikir",
+      "count": 33,
+      "times": ["her zaman"]
+    },
+    {
+      "id": 4,
+      "name": "Hamd",
+      "arabic": "الْحَمْدُ لِلَّهِ",
+      "pronunciation": "Elhamdulillah",
+      "turkish": "Hamd Allah'a mahsustur",
+      "category": "zikir",
+      "count": 33,
+      "times": ["her zaman"]
+    },
+    {
+      "id": 5,
+      "name": "Tekbir",
+      "arabic": "اللَّهُ أَكْبَرُ",
+      "pronunciation": "Allahu ekber",
+      "turkish": "Allah en büyüktür",
+      "category": "zikir",
+      "count": 33,
+      "times": ["her zaman"]
+    }
+  ],
+  "reminders": {
+    "enabled": true,
+    "beforePrayer": 5,
+    "azan": true,
+    "notifications": true,
+    "sound": "azan.mp3"
+  }
+}

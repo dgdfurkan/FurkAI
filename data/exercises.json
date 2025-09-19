@@ -1,0 +1,121 @@
+{
+  "exercises": [
+    {
+      "id": 1,
+      "name": "Koşu",
+      "category": "kardiyo",
+      "duration": 30,
+      "calories": 300,
+      "difficulty": "orta",
+      "description": "Orta tempoda koşu",
+      "instructions": [
+        "5 dakika ısınma yürüyüşü",
+        "20 dakika orta tempoda koşu",
+        "5 dakika soğuma yürüyüşü"
+      ],
+      "muscleGroups": ["bacak", "kalp"],
+      "equipment": ["koşu ayakkabısı"]
+    },
+    {
+      "id": 2,
+      "name": "Push-up",
+      "category": "güç",
+      "reps": 15,
+      "sets": 3,
+      "calories": 50,
+      "difficulty": "kolay",
+      "description": "Klasik şınav",
+      "instructions": [
+        "Yüz üstü yatın",
+        "Ellerinizi omuz genişliğinde yerleştirin",
+        "Vücudunuzu düz tutarak yukarı itin",
+        "Kontrolle aşağı inin"
+      ],
+      "muscleGroups": ["göğüs", "omuz", "kol"],
+      "equipment": []
+    },
+    {
+      "id": 3,
+      "name": "Plank",
+      "category": "core",
+      "duration": 60,
+      "sets": 2,
+      "calories": 30,
+      "difficulty": "orta",
+      "description": "Düz plank pozisyonu",
+      "instructions": [
+        "Yüz üstü yatın",
+        "Dirseklerinizi 90 derece açıyla yerleştirin",
+        "Vücudunuzu düz bir çizgi halinde tutun",
+        "60 saniye bekleyin"
+      ],
+      "muscleGroups": ["karın", "sırt", "omuz"],
+      "equipment": []
+    },
+    {
+      "id": 4,
+      "name": "Squat",
+      "category": "güç",
+      "reps": 20,
+      "sets": 3,
+      "calories": 80,
+      "difficulty": "kolay",
+      "description": "Klasik çömelme",
+      "instructions": [
+        "Ayaklarınızı omuz genişliğinde açın",
+        "Ayak parmaklarınız hafif dışa baksın",
+        "Kalçalarınızı geriye iterek çömelin",
+        "Dizlerinizi 90 dereceye kadar bükün",
+        "Kontrolle yukarı kalkın"
+      ],
+      "muscleGroups": ["bacak", "kalça"],
+      "equipment": []
+    },
+    {
+      "id": 5,
+      "name": "Burpee",
+      "category": "kardiyo",
+      "reps": 10,
+      "sets": 3,
+      "calories": 100,
+      "difficulty": "zor",
+      "description": "Tam vücut egzersizi",
+      "instructions": [
+        "Ayakta başlayın",
+        "Çömelin ve elleri yere koyun",
+        "Ayakları geriye atın (şınav pozisyonu)",
+        "Şınav yapın",
+        "Ayakları geri çekin",
+        "Yukarı zıplayın"
+      ],
+      "muscleGroups": ["tüm vücut"],
+      "equipment": []
+    }
+  ],
+  "workoutPlans": [
+    {
+      "id": 1,
+      "name": "Başlangıç Planı",
+      "duration": 30,
+      "difficulty": "kolay",
+      "exercises": [1, 2, 3],
+      "description": "Yeni başlayanlar için ideal"
+    },
+    {
+      "id": 2,
+      "name": "Orta Seviye",
+      "duration": 45,
+      "difficulty": "orta",
+      "exercises": [1, 2, 3, 4],
+      "description": "Temel fitness seviyesi"
+    },
+    {
+      "id": 3,
+      "name": "İleri Seviye",
+      "duration": 60,
+      "difficulty": "zor",
+      "exercises": [1, 2, 3, 4, 5],
+      "description": "Deneyimli sporcular için"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "meals": [
+    {
+      "id": 1,
+      "name": "Kahvaltı",
+      "time": "08:00",
+      "calories": 400,
+      "description": "Sağlıklı kahvaltı",
+      "foods": [
+        {
+          "name": "Yumurta",
+          "amount": "2 adet",
+          "calories": 140,
+          "protein": 12,
+          "carbs": 1,
+          "fat": 10
+        },
+        {
+          "name": "Tam Buğday Ekmeği",
+          "amount": "2 dilim",
+          "calories": 160,
+          "protein": 6,
+          "carbs": 32,
+          "fat": 2
+        },
+        {
+          "name": "Peynir",
+          "amount": "50g",
+          "calories": 100,
+          "protein": 7,
+          "carbs": 1,
+          "fat": 8
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Öğle Yemeği",
+      "time": "13:00",
+      "calories": 600,
+      "description": "Besleyici öğle yemeği",
+      "foods": [
+        {
+          "name": "Tavuk Göğsü",
+          "amount": "150g",
+          "calories": 250,
+          "protein": 46,
+          "carbs": 0,
+          "fat": 5
+        },
+        {
+          "name": "Pilav",
+          "amount": "1 porsiyon",
+          "calories": 200,
+          "protein": 4,
+          "carbs": 44,
+          "fat": 0
+        },
+        {
+          "name": "Salata",
+          "amount": "1 porsiyon",
+          "calories": 50,
+          "protein": 2,
+          "carbs": 10,
+          "fat": 0
+        },
+        {
+          "name": "Yoğurt",
+          "amount": "1 kase",
+          "calories": 100,
+          "protein": 6,
+          "carbs": 8,
+          "fat": 4
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Akşam Yemeği",
+      "time": "19:00",
+      "calories": 500,
+      "description": "Hafif akşam yemeği",
+      "foods": [
+        {
+          "name": "Balık",
+          "amount": "200g",
+          "calories": 300,
+          "protein": 40,
+          "carbs": 0,
+          "fat": 12
+        },
+        {
+          "name": "Sebze Yemeği",
+          "amount": "1 porsiyon",
+          "calories": 100,
+          "protein": 3,
+          "carbs": 20,
+          "fat": 2
+        },
+        {
+          "name": "Çorba",
+          "amount": "1 kase",
+          "calories": 100,
+          "protein": 4,
+          "carbs": 15,
+          "fat": 2
+        }
+      ]
+    }
+  ],
+  "foods": [
+    {
+      "id": 1,
+      "name": "Yumurta",
+      "category": "protein",
+      "caloriesPer100g": 155,
+      "protein": 13,
+      "carbs": 1,
+      "fat": 11,
+      "fiber": 0,
+      "vitamins": ["B12", "D"],
+      "minerals": ["demir", "çinko"]
+    },
+    {
+      "id": 2,
+      "name": "Tavuk Göğsü",
+      "category": "protein",
+      "caloriesPer100g": 165,
+      "protein": 31,
+      "carbs": 0,
+      "fat": 3.6,
+      "fiber": 0,
+      "vitamins": ["B6", "B12"],
+      "minerals": ["fosfor", "selenyum"]
+    },
+    {
+      "id": 3,
+      "name": "Pirinç",
+      "category": "karbonhidrat",
+      "caloriesPer100g": 130,
+      "protein": 2.7,
+      "carbs": 28,
+      "fat": 0.3,
+      "fiber": 0.4,
+      "vitamins": ["B1", "B3"],
+      "minerals": ["manganez", "selenyum"]
+    },
+    {
+      "id": 4,
+      "name": "Brokoli",
+      "category": "sebze",
+      "caloriesPer100g": 34,
+      "protein": 2.8,
+      "carbs": 7,
+      "fat": 0.4,
+      "fiber": 2.6,
+      "vitamins": ["C", "K", "A"],
+      "minerals": ["potasyum", "folat"]
+    }
+  ],
+  "nutritionGoals": {
+    "calories": 2000,
+    "protein": 150,
+    "carbs": 250,
+    "fat": 67,
+    "fiber": 25,
+    "water": 8
+  }
+}
