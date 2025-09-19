@@ -14,16 +14,19 @@ class RutinlerModule {
     console.log('Rutinler modülü başlatılıyor...');
     
     try {
-      // Kayıtlı rutinleri yükle
-      this.rutinler = await window.DataManager.get('rutinler', []);
+      // Kayıtlı rutinleri yükle - doğru store'dan
+      this.rutinler = await window.DataManager.getAll('rutinler') || [];
+      
+      console.log('Yüklenen rutinler:', this.rutinler);
       
       // Eğer hiç rutin yoksa veya sadece boş array varsa, default rutinleri ekle
       if (!this.rutinler || this.rutinler.length === 0) {
+        console.log('Rutin bulunamadı, default rutinler oluşturuluyor...');
         await this.createDefaultRutinler();
       }
       
       this.isInitialized = true;
-      console.log('Rutinler modülü başlatıldı');
+      console.log('Rutinler modülü başlatıldı, toplam rutin:', this.rutinler.length);
     } catch (error) {
       console.error('Rutinler modülü başlatılamadı:', error);
     }
@@ -125,8 +128,13 @@ class RutinlerModule {
 
     try {
       this.rutinler = defaultRutinler;
-      await window.DataManager.set('rutinler', this.rutinler);
-      console.log('Default rutinler oluşturuldu');
+      
+      // Her rutini ayrı ayrı store'a ekle
+      for (const rutin of defaultRutinler) {
+        await window.DataManager.add('rutinler', rutin);
+      }
+      
+      console.log('Default rutinler oluşturuldu:', defaultRutinler.length);
     } catch (error) {
       console.error('Default rutinler oluşturulamadı:', error);
     }
@@ -453,8 +461,11 @@ class RutinlerModule {
     }
 
     try {
+      // Rutini store'a ekle
+      await window.DataManager.add('rutinler', rutin);
+      
+      // Local array'e ekle
       this.rutinler.push(rutin);
-      await window.DataManager.set('rutinler', this.rutinler);
       
       this.closeRutinModal();
       this.render(); // Sayfayı yenile
@@ -641,8 +652,14 @@ window.RutinlerModule.forceAddDefaultRutinler = async function() {
 
 window.RutinlerModule.resetRutinler = async function() {
   console.log('Rutinler temizleniyor ve default rutinler ekleniyor...');
+  
+  // Store'daki tüm rutinleri sil
+  const allRutinler = await window.DataManager.getAll('rutinler');
+  for (const rutin of allRutinler) {
+    await window.DataManager.delete('rutinler', rutin.id);
+  }
+  
   this.rutinler = [];
-  await window.DataManager.set('rutinler', []);
   await this.createDefaultRutinler();
   this.render();
 };
