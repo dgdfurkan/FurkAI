@@ -17,8 +17,8 @@ class RutinlerModule {
       // Kayıtlı rutinleri yükle
       this.rutinler = await window.DataManager.get('rutinler', []);
       
-      // Eğer hiç rutin yoksa, default rutinleri ekle
-      if (this.rutinler.length === 0) {
+      // Eğer hiç rutin yoksa veya sadece boş array varsa, default rutinleri ekle
+      if (!this.rutinler || this.rutinler.length === 0) {
         await this.createDefaultRutinler();
       }
       
@@ -631,3 +631,18 @@ class RutinlerModule {
 
 // Global olarak erişilebilir yap
 window.RutinlerModule = new RutinlerModule();
+
+// Debug fonksiyonları - Console'dan çağırabilirsiniz
+window.RutinlerModule.forceAddDefaultRutinler = async function() {
+  console.log('Default rutinler zorla ekleniyor...');
+  await this.createDefaultRutinler();
+  this.render();
+};
+
+window.RutinlerModule.resetRutinler = async function() {
+  console.log('Rutinler temizleniyor ve default rutinler ekleniyor...');
+  this.rutinler = [];
+  await window.DataManager.set('rutinler', []);
+  await this.createDefaultRutinler();
+  this.render();
+};
