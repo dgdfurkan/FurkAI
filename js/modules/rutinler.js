@@ -654,12 +654,50 @@ window.RutinlerModule.resetRutinler = async function() {
   console.log('Rutinler temizleniyor ve default rutinler ekleniyor...');
   
   // Store'daki tüm rutinleri sil
-  const allRutinler = await window.DataManager.getAll('rutinler');
-  for (const rutin of allRutinler) {
-    await window.DataManager.delete('rutinler', rutin.id);
+  try {
+    const allRutinler = await window.DataManager.getAll('rutinler');
+    for (const rutin of allRutinler) {
+      await window.DataManager.delete('rutinler', rutin.id);
+    }
+  } catch (error) {
+    console.log('Store temizleme hatası (normal):', error);
   }
   
   this.rutinler = [];
   await this.createDefaultRutinler();
   this.render();
+};
+
+// Cache temizleme fonksiyonu
+window.RutinlerModule.clearAllCache = async function() {
+  console.log('Tüm cache temizleniyor...');
+  
+  // IndexedDB'yi temizle
+  if (window.DataManager && window.DataManager.db) {
+    const stores = ['rutinler', 'settings', 'todo', 'yemek', 'spor', 'namaz', 'ezber', 'zincir'];
+    for (const storeName of stores) {
+      try {
+        const items = await window.DataManager.getAll(storeName);
+        for (const item of items) {
+          await window.DataManager.delete(storeName, item.id);
+        }
+      } catch (error) {
+        console.log(`${storeName} store temizleme hatası:`, error);
+      }
+    }
+  }
+  
+  // Service Worker cache'i temizle
+  if ('caches' in window) {
+    const cacheNames = await caches.keys();
+    for (const cacheName of cacheNames) {
+      await caches.delete(cacheName);
+    }
+  }
+  
+  // Local Storage temizle
+  localStorage.clear();
+  
+  console.log('Cache temizleme tamamlandı! Sayfayı yenileyin.');
+  alert('Cache temizlendi! Sayfayı yenileyin.');
 };

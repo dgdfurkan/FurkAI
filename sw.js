@@ -1,5 +1,5 @@
 // Service Worker for FurkAI PWA
-const CACHE_NAME = 'furkai-v1.0.0';
+const CACHE_NAME = 'furkai-v1.0.1';
 const STATIC_CACHE_URLS = [
   '/',
   '/index.html',
