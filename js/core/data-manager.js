@@ -15,6 +15,7 @@ class DataManager {
       ezber: 'ezber',
       zincir: 'zincir',
       todo: 'todo',
+      rutinler: 'rutinler',
       settings: 'settings',
       notifications: 'notifications'
     };
