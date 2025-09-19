@@ -146,6 +146,28 @@ class DataManager {
     });
   }
 
+  async update(storeName, id, data) {
+    return new Promise((resolve, reject) => {
+      const transaction = this.db.transaction([storeName], 'readwrite');
+      const store = transaction.objectStore(storeName);
+      
+      // Timestamp güncelle
+      data.updatedAt = new Date().toISOString();
+
+      const request = store.put({ ...data, id });
+
+      request.onsuccess = () => {
+        window.EventSystem.emit(window.FurkAIEvents.DATA_SAVED, storeName, data);
+        resolve(request.result);
+      };
+
+      request.onerror = () => {
+        console.error('Veri güncellenemedi:', request.error);
+        reject(request.error);
+      };
+    });
+  }
+
   /**
    * Veri güncelle
    * @param {string} storeName - Store adı

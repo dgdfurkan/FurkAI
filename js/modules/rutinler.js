@@ -841,12 +841,12 @@ window.RutinlerModule.openYemekRutini = function(rutin) {
             <div class="card-content">
               <div class="calorie-progress">
                 <div class="calorie-circle">
-                  <span class="calorie-current">850</span>
+                  <span class="calorie-current">0</span>
                   <span class="calorie-target">/ 2000</span>
                 </div>
                 <div class="calorie-info">
                   <p>Hedef: 2000 kalori</p>
-                  <p>Kalan: 1150 kalori</p>
+                  <p>Kalan: 2000 kalori</p>
                 </div>
               </div>
             </div>
@@ -862,10 +862,10 @@ window.RutinlerModule.openYemekRutini = function(rutin) {
               <div class="water-progress">
                 <div class="water-glasses">
                   ${Array(8).fill(0).map((_, i) => 
-                    `<div class="water-glass ${i < 3 ? 'filled' : ''}">💧</div>`
+                    `<div class="water-glass">💧</div>`
                   ).join('')}
                 </div>
-                <p>3 / 8 bardak</p>
+                <p>0 / 8 bardak</p>
               </div>
             </div>
           </div>
@@ -961,12 +961,12 @@ window.RutinlerModule.openSporRutini = function(rutin) {
             <div class="card-content">
               <div class="calorie-burn">
                 <div class="calorie-circle">
-                  <span class="calorie-current">320</span>
+                  <span class="calorie-current">0</span>
                   <span class="calorie-target">/ 500</span>
                 </div>
                 <div class="calorie-info">
                   <p>Hedef: 500 kalori</p>
-                  <p>Kalan: 180 kalori</p>
+                  <p>Kalan: 500 kalori</p>
                 </div>
               </div>
             </div>
@@ -981,12 +981,12 @@ window.RutinlerModule.openSporRutini = function(rutin) {
             <div class="card-content">
               <div class="step-counter">
                 <div class="step-circle">
-                  <span class="step-current">7,250</span>
+                  <span class="step-current">0</span>
                   <span class="step-target">/ 10,000</span>
                 </div>
                 <div class="step-info">
                   <p>Hedef: 10,000 adım</p>
-                  <p>Kalan: 2,750 adım</p>
+                  <p>Kalan: 10,000 adım</p>
                 </div>
               </div>
             </div>
@@ -1684,15 +1684,11 @@ window.RutinlerModule.openSurelerRutini = function(rutin) {
               <div class="reading-list">
                 <div class="reading-item">
                   <span class="surah-name">Fatiha Suresi</span>
-                  <span class="reading-status">✅</span>
-                </div>
-                <div class="reading-item">
-                  <span class="surah-name">Bakara 1-10</span>
                   <span class="reading-status">⏰</span>
                 </div>
                 <div class="reading-item">
                   <span class="surah-name">İhlas Suresi</span>
-                  <span class="reading-status">✅</span>
+                  <span class="reading-status">⏰</span>
                 </div>
               </div>
             </div>
@@ -1707,11 +1703,11 @@ window.RutinlerModule.openSurelerRutini = function(rutin) {
             <div class="card-content">
               <div class="reading-progress">
                 <div class="progress-circle">
-                  <span class="progress-current">25</span>
+                  <span class="progress-current">0</span>
                   <span class="progress-target">/ 114</span>
                 </div>
                 <div class="progress-info">
-                  <p>Okunan: 25 sure</p>
+                  <p>Okunan: 0 sure</p>
                   <p>Hedef: 114 sure</p>
                 </div>
               </div>
@@ -1729,7 +1725,7 @@ window.RutinlerModule.openSurelerRutini = function(rutin) {
                 <div class="surah-item" onclick="window.RutinlerModule?.openSurahDetail(1)">
                   <span class="surah-number">1</span>
                   <span class="surah-name">Fatiha</span>
-                  <span class="surah-status">✅</span>
+                  <span class="surah-status">⏰</span>
                 </div>
                 <div class="surah-item" onclick="window.RutinlerModule?.openSurahDetail(2)">
                   <span class="surah-number">2</span>
@@ -1739,7 +1735,7 @@ window.RutinlerModule.openSurelerRutini = function(rutin) {
                 <div class="surah-item" onclick="window.RutinlerModule?.openSurahDetail(112)">
                   <span class="surah-number">112</span>
                   <span class="surah-name">İhlas</span>
-                  <span class="surah-status">✅</span>
+                  <span class="surah-status">⏰</span>
                 </div>
                 <div class="surah-item" onclick="window.RutinlerModule?.openSurahDetail(113)">
                   <span class="surah-number">113</span>
@@ -1754,78 +1750,6 @@ window.RutinlerModule.openSurelerRutini = function(rutin) {
               </div>
             </div>
           </div>
-
-          <!-- Okuma İstatistikleri -->
-          <div class="dashboard-card">
-            <div class="card-header">
-              <h3 class="card-title">İstatistikler</h3>
-              <span class="card-icon">📈</span>
-            </div>
-            <div class="card-content">
-              <div class="reading-stats">
-                <div class="stat-item">
-                  <span class="stat-value">25</span>
-                  <span class="stat-label">Okunan</span>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-value">7</span>
-                  <span class="stat-label">Gün</span>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-value">92%</span>
-                  <span class="stat-label">Başarı</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Okuma Rehberi -->
-          <div class="dashboard-card">
-            <div class="card-header">
-              <h3 class="card-title">Okuma Rehberi</h3>
-              <span class="card-icon">💡</span>
-            </div>
-            <div class="card-content">
-              <div class="reading-tips">
-                <div class="tip-item">
-                  <span class="tip-icon">🎯</span>
-                  <span class="tip-text">Günde 1-2 sure okuyun</span>
-                </div>
-                <div class="tip-item">
-                  <span class="tip-icon">📖</span>
-                  <span class="tip-text">Anlamını öğrenin</span>
-                </div>
-                <div class="tip-item">
-                  <span class="tip-icon">🔄</span>
-                  <span class="tip-text">Düzenli tekrar yapın</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Favori Sureler -->
-          <div class="dashboard-card">
-            <div class="card-header">
-              <h3 class="card-title">Favori Sureler</h3>
-              <span class="card-icon">⭐</span>
-            </div>
-            <div class="card-content">
-              <div class="favorite-surahs">
-                <div class="favorite-item">
-                  <span class="favorite-icon">⭐</span>
-                  <span class="favorite-name">Fatiha</span>
-                </div>
-                <div class="favorite-item">
-                  <span class="favorite-icon">⭐</span>
-                  <span class="favorite-name">İhlas</span>
-                </div>
-                <div class="favorite-item">
-                  <span class="favorite-icon">⭐</span>
-                  <span class="favorite-name">Felak</span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div class="rutin-actions">
@@ -1833,12 +1757,195 @@ window.RutinlerModule.openSurelerRutini = function(rutin) {
             <span class="icon">▶️</span>
             Okumaya Başla
           </button>
-          <button class="btn btn-secondary" onclick="window.RutinlerModule?.markAsRead()">
-            <span class="icon">✅</span>
-            Okundu Olarak İşaretle
+          <button class="btn btn-secondary" onclick="window.RutinlerModule?.openRutinSettings('${rutin.id}')">
+            <span class="icon">⚙️</span>
+            Ayarlar
           </button>
         </div>
       </div>
     </div>
   `;
+};
+
+
+// Rutin ayarları sayfası
+window.RutinlerModule.openRutinSettings = function(rutinId) {
+  const rutin = window.RutinlerModule.rutinler.find(r => r.id === rutinId);
+  if (!rutin) return;
+
+  const content = document.getElementById("page-content");
+  if (!content) return;
+
+  content.innerHTML = `
+    <div class="rutin-settings-container">
+      <div class="rutin-settings-header">
+        <button class="btn btn-secondary" onclick="window.RutinlerModule?.openRutinDetail('${rutin.id}')">
+          ← Geri
+        </button>
+        <h2>⚙️ ${rutin.name} Ayarları</h2>
+      </div>
+
+      <div class="rutin-settings-content">
+        <div class="settings-section">
+          <h3 class="settings-title">📅 Sıklık Ayarları</h3>
+          <div class="setting-item">
+            <label class="setting-label">Rutin Sıklığı</label>
+            <select class="setting-select" id="frequency-select">
+              <option value="daily" ${rutin.frequency === 'daily' ? 'selected' : ''}>Günlük</option>
+              <option value="weekly" ${rutin.frequency === 'weekly' ? 'selected' : ''}>Haftalık</option>
+              <option value="custom" ${rutin.frequency === 'custom' ? 'selected' : ''}>Özel</option>
+            </select>
+          </div>
+
+          <div class="setting-item" id="time-setting" style="display: ${rutin.frequency === 'daily' ? 'block' : 'none'}">
+            <label class="setting-label">Saat</label>
+            <input type="time" class="setting-input" id="time-input" value="${rutin.time || '09:00'}">
+          </div>
+
+          <div class="setting-item" id="days-setting" style="display: ${rutin.frequency === 'weekly' ? 'block' : 'none'}">
+            <label class="setting-label">Günler</label>
+            <div class="days-selector">
+              <label class="day-checkbox">
+                <input type="checkbox" value="monday" ${rutin.days.includes('monday') ? 'checked' : ''}>
+                <span>Pazartesi</span>
+              </label>
+              <label class="day-checkbox">
+                <input type="checkbox" value="tuesday" ${rutin.days.includes('tuesday') ? 'checked' : ''}>
+                <span>Salı</span>
+              </label>
+              <label class="day-checkbox">
+                <input type="checkbox" value="wednesday" ${rutin.days.includes('wednesday') ? 'checked' : ''}>
+                <span>Çarşamba</span>
+              </label>
+              <label class="day-checkbox">
+                <input type="checkbox" value="thursday" ${rutin.days.includes('thursday') ? 'checked' : ''}>
+                <span>Perşembe</span>
+              </label>
+              <label class="day-checkbox">
+                <input type="checkbox" value="friday" ${rutin.days.includes('friday') ? 'checked' : ''}>
+                <span>Cuma</span>
+              </label>
+              <label class="day-checkbox">
+                <input type="checkbox" value="saturday" ${rutin.days.includes('saturday') ? 'checked' : ''}>
+                <span>Cumartesi</span>
+              </label>
+              <label class="day-checkbox">
+                <input type="checkbox" value="sunday" ${rutin.days.includes('sunday') ? 'checked' : ''}>
+                <span>Pazar</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3 class="settings-title">🔔 Hatırlatıcı Ayarları</h3>
+          <div class="setting-item">
+            <label class="setting-label">Hatırlatıcı</label>
+            <label class="toggle-switch">
+              <input type="checkbox" id="reminder-toggle" ${rutin.reminder ? 'checked' : ''}>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item" id="reminder-time-setting" style="display: ${rutin.reminder ? 'block' : 'none'}">
+            <label class="setting-label">Hatırlatma Zamanı</label>
+            <select class="setting-select" id="reminder-time-select">
+              <option value="0">Tam zamanında</option>
+              <option value="5">5 dakika önce</option>
+              <option value="10">10 dakika önce</option>
+              <option value="15">15 dakika önce</option>
+              <option value="30">30 dakika önce</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3 class="settings-title">🎯 Hedef Ayarları</h3>
+          <div class="setting-item">
+            <label class="setting-label">Hedef</label>
+            <input type="text" class="setting-input" id="goal-input" value="${rutin.goal || ''}" placeholder="Hedefinizi yazın...">
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3 class="settings-title">📊 Durum</h3>
+          <div class="setting-item">
+            <label class="setting-label">Rutin Durumu</label>
+            <label class="toggle-switch">
+              <input type="checkbox" id="active-toggle" ${rutin.isActive ? 'checked' : ''}>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-actions">
+          <button class="btn btn-primary" onclick="window.RutinlerModule?.saveRutinSettings('${rutin.id}')">
+            <span class="icon">💾</span>
+            Kaydet
+          </button>
+          <button class="btn btn-danger" onclick="window.RutinlerModule?.deleteRutin('${rutin.id}')">
+            <span class="icon">🗑️</span>
+            Sil
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Event listeners
+  document.getElementById('frequency-select').addEventListener('change', function() {
+    const frequency = this.value;
+    const timeSetting = document.getElementById('time-setting');
+    const daysSetting = document.getElementById('days-setting');
+    
+    if (frequency === 'daily') {
+      timeSetting.style.display = 'block';
+      daysSetting.style.display = 'none';
+    } else if (frequency === 'weekly') {
+      timeSetting.style.display = 'none';
+      daysSetting.style.display = 'block';
+    } else {
+      timeSetting.style.display = 'none';
+      daysSetting.style.display = 'none';
+    }
+  });
+
+  document.getElementById('reminder-toggle').addEventListener('change', function() {
+    const reminderTimeSetting = document.getElementById('reminder-time-setting');
+    reminderTimeSetting.style.display = this.checked ? 'block' : 'none';
+  });
+};
+
+// Rutin ayarlarını kaydet
+window.RutinlerModule.saveRutinSettings = function(rutinId) {
+  const rutin = window.RutinlerModule.rutinler.find(r => r.id === rutinId);
+  if (!rutin) return;
+
+  // Ayarları al
+  const frequency = document.getElementById('frequency-select').value;
+  const time = document.getElementById('time-input').value;
+  const reminder = document.getElementById('reminder-toggle').checked;
+  const active = document.getElementById('active-toggle').checked;
+  const goal = document.getElementById('goal-input').value;
+
+  // Günleri al
+  const dayCheckboxes = document.querySelectorAll('.day-checkbox input[type="checkbox"]:checked');
+  const days = Array.from(dayCheckboxes).map(cb => cb.value);
+
+  // Rutini güncelle
+  rutin.frequency = frequency;
+  rutin.time = time;
+  rutin.reminder = reminder;
+  rutin.isActive = active;
+  rutin.goal = goal;
+  rutin.days = days.length > 0 ? days : ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+  // Veritabanını güncelle
+  window.DataManager.update('rutinler', rutinId, rutin);
+
+  // Başarı mesajı
+  alert('Rutin ayarları kaydedildi!');
+
+  // Rutin detay sayfasına dön
+  window.RutinlerModule.openRutinDetail(rutinId);
 };

@@ -3,9 +3,9 @@
  */
 class ThemeManager {
   constructor() {
-    this.currentTheme = 'modern-blue';
-    this.themes = null;
-    this.init();
+    this.currentThemeId = 'modern-blue';
+    this.themes = [];
+    this.defaultTheme = null;
   }
 
   async init() {
@@ -14,15 +14,11 @@ class ThemeManager {
       await this.loadThemes();
       
       // Kayıtlı temayı al
-      const savedTheme = localStorage.getItem('furkai-theme');
-      if (savedTheme && this.themes.find(t => t.id === savedTheme)) {
-        this.currentTheme = savedTheme;
-      }
+      const savedThemeId = window.DataManager?.getSetting('themeId');
+      const themeToApply = this.getThemeById(savedThemeId) || this.defaultTheme;
+      this.applyTheme(themeToApply);
       
-      // Temayı uygula
-      this.applyTheme(this.currentTheme);
-      
-      console.log('ThemeManager başlatıldı:', this.currentTheme);
+      console.log('ThemeManager başlatıldı:', this.currentThemeId);
     } catch (error) {
       console.error('ThemeManager başlatılamadı:', error);
     }
@@ -33,6 +29,7 @@ class ThemeManager {
       const response = await fetch('/FurkAI/data/themes.json');
       const data = await response.json();
       this.themes = data.themes;
+      this.defaultTheme = this.themes.find(t => t.id === 'modern-blue');
       console.log('Temalar yüklendi:', this.themes.length);
     } catch (error) {
       console.error('Temalar yüklenemedi:', error);
@@ -40,97 +37,75 @@ class ThemeManager {
       this.themes = [{
         id: 'modern-blue',
         name: 'Modern Mavi',
+        description: 'Açık mavi-yeşil gradient arkaplan, beyaz kartlar',
         colors: {
           primary: '#3B82F6',
           secondary: '#10B981',
           accent: '#F59E0B',
-          accent-secondary: '#EF4444',
+          accentSecondary: '#EF4444',
           background: 'linear-gradient(135deg, #E0F2FE 0%, #F0FDF4 50%, #E0F2FE 100%)',
-          surface: 'rgba(255, 255, 255, 0.9)',
-          surface-secondary: 'rgba(255, 255, 255, 0.7)',
-          text-primary: '#1F2937',
-          text-secondary: '#6B7280',
+          surface: 'rgba(255, 255, 255, 0.95)',
+          bgPrimary: '#ffffff',
+          bgSecondary: 'rgba(255, 255, 255, 0.9)',
+          bgTertiary: 'rgba(240, 240, 240, 0.7)',
+          textPrimary: '#1F2937',
+          textSecondary: '#6B7280',
           border: 'rgba(59, 130, 246, 0.2)',
           shadow: 'rgba(0, 0, 0, 0.1)'
         }
       }];
+      this.defaultTheme = this.themes[0];
     }
-  }
-
-  applyTheme(themeId) {
-    const theme = this.themes.find(t => t.id === themeId);
-    if (!theme) {
-      console.error('Tema bulunamadı:', themeId);
-      return;
-    }
-
-    this.currentTheme = themeId;
-    
-    // CSS değişkenlerini güncelle
-    const root = document.documentElement;
-    const colors = theme.colors;
-    
-    root.style.setProperty('--color-primary', colors.primary);
-    root.style.setProperty('--color-secondary', colors.secondary);
-    root.style.setProperty('--color-accent', colors.accent);
-    root.style.setProperty('--color-accent-secondary', colors.accent-secondary);
-    root.style.setProperty('--color-bg-primary', colors.background);
-    root.style.setProperty('--color-bg-secondary', colors.surface);
-    root.style.setProperty('--color-bg-tertiary', colors.surface-secondary);
-    root.style.setProperty('--color-text-primary', colors.textPrimary);
-    root.style.setProperty('--color-text-secondary', colors.textSecondary);
-    root.style.setProperty('--color-border', colors.border);
-    root.style.setProperty('--color-shadow', colors.shadow);
-
-    // Arkaplanı güncelle
-    document.body.style.background = colors.background;
-    
-    // LocalStorage'a kaydet
-    localStorage.setItem('furkai-theme', themeId);
-    
-    console.log('Tema uygulandı:', theme.name);
-  }
-
-  getCurrentTheme() {
-    return this.themes.find(t => t.id === this.currentTheme);
   }
 
   getAllThemes() {
-    return this.themes || [];
+    return this.themes;
+  }
+
+  getThemeById(themeId) {
+    return this.themes.find(theme => theme.id === themeId);
+  }
+
+  getCurrentTheme() {
+    return this.getThemeById(this.currentThemeId) || this.defaultTheme;
+  }
+
+  applyTheme(theme) {
+    if (!theme) return;
+    const root = document.documentElement;
+    for (const [key, value] of Object.entries(theme.colors)) {
+      root.style.setProperty(`--color-${key}`, value);
+    }
+    this.currentThemeId = theme.id;
+    if (window.DataManager) {
+      window.DataManager.saveSetting('themeId', theme.id);
+    }
+    console.log(`Tema uygulandı: ${theme.name}`);
   }
 
   setTheme(themeId) {
-    this.applyTheme(themeId);
+    const theme = this.getThemeById(themeId);
+    if (theme) {
+      this.applyTheme(theme);
+      // Update theme selector UI if it's visible
+      if (window.PageManager && window.PageManager.currentPage === 'settings') {
+        window.PageManager.loadThemeSelector();
+      }
+    }
   }
 
-  // Tema önizlemesi için
   previewTheme(themeId) {
-    const theme = this.themes.find(t => t.id === themeId);
+    const theme = this.getThemeById(themeId);
     if (!theme) return;
-
     const root = document.documentElement;
-    const colors = theme.colors;
-    
-    root.style.setProperty('--color-primary', colors.primary);
-    root.style.setProperty('--color-secondary', colors.secondary);
-    root.style.setProperty('--color-accent', colors.accent);
-    root.style.setProperty('--color-accent-secondary', colors.accent-secondary);
-    root.style.setProperty('--color-bg-primary', colors.background);
-    root.style.setProperty('--color-bg-secondary', colors.surface);
-    root.style.setProperty('--color-bg-tertiary', colors.surface-secondary);
-    root.style.setProperty('--color-text-primary', colors.textPrimary);
-    root.style.setProperty('--color-text-secondary', colors.textSecondary);
-    root.style.setProperty('--color-border', colors.border);
-    root.style.setProperty('--color-shadow', colors.shadow);
-
-    document.body.style.background = colors.background;
+    for (const [key, value] of Object.entries(theme.colors)) {
+      root.style.setProperty(`--color-${key}`, value);
+    }
   }
 
-  // Önizlemeyi geri al
   resetPreview() {
-    this.applyTheme(this.currentTheme);
+    this.applyTheme(this.getCurrentTheme());
   }
 }
 
-// Global olarak erişilebilir yap
 window.ThemeManager = new ThemeManager();
