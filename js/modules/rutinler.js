@@ -188,6 +188,13 @@ class RutinlerModule {
 
     // Rutinleri tekrar yükle (sayfa değişince)
     await this.loadRutinler();
+    
+    // Eğer hiç rutin yoksa ve rutinler sayfasındaysak, default rutinleri oluştur
+    if ((!this.rutinler || this.rutinler.length === 0) && !this.isInitialized) {
+      console.log('Rutinler sayfasında rutin bulunamadı, default rutinler oluşturuluyor...');
+      await this.createDefaultRutinler();
+      this.isInitialized = true;
+    }
 
     try {
       content.innerHTML = `

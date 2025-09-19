@@ -247,10 +247,8 @@ class PageManager {
 
   createRoutinesPage() {
     if (window.RutinlerModule) {
-      // Rutinler modülünü başlat ve render et
-      window.RutinlerModule.init().then(async () => {
-        await window.RutinlerModule.render();
-      });
+      // Rutinler modülünü sadece render et, init etme
+      window.RutinlerModule.render();
       return '';
     }
     return `

@@ -135,16 +135,15 @@ body {
 .page-content {
   flex: 1;
   padding: var(--space-6);
-  padding-bottom: calc(var(--space-6) + 80px); /* Space for fixed bottom nav */
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Bottom Navigation */
+/* Bottom Navigation - Sticky */
 .bottom-nav {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   left: 0;
   right: 0;
@@ -154,7 +153,7 @@ body {
   display: flex;
   padding: var(--space-2) var(--space-4);
   gap: var(--space-2);
-  z-index: var(--z-fixed);
+  z-index: var(--z-sticky);
 }
 
 .nav-item {
