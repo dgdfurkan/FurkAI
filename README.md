@@ -1,125 +1,177 @@
-# FurkAI PWA - README
+# FurkAI - Personal Assistant PWA
 
-## Kurulum ve Kullanım
+FurkAI, günlük rutinlerinizi yönetmenize yardımcı olan modern bir Progressive Web App (PWA) kişisel asistanıdır.
 
-### 1. GitHub Pages'e Deploy Etme
+## 🚀 Özellikler
 
-1. Bu repository'yi GitHub'a push edin
-2. Repository Settings > Pages bölümüne gidin
-3. Source olarak "Deploy from a branch" seçin
-4. Branch olarak "main" seçin
-5. Save butonuna tıklayın
+### 📱 Modern Arayüz
+- **Bottom Navigation**: Ana Ekran, Takvim, Rutinler, Ayarlar
+- **Dashboard**: Günlük özet ve hızlı erişim kartları
+- **Glassmorphism**: Modern cam efekti tasarım
+- **Responsive**: Tüm cihazlarda mükemmel görünüm
+- **Tutorial**: İlk kullanıcılar için interaktif rehber
 
-### 2. iPhone Safari'de Ana Ekrana Ekleme
+### 🔁 Rutinler Modülü
+- **Hazır Şablonlar**: Yemek, Spor, Namaz, Ezber, Zincir rutinleri
+- **Özel Rutinler**: Kendi rutinlerinizi oluşturun
+- **Takip Sistemi**: Tamamlanan, zincir, başarı oranı
+- **Hatırlatıcılar**: Zaman bazlı bildirimler
+- **Kategoriler**: Sabah, Akşam, Spor, Yemek, Namaz, Öğrenme
 
-1. Safari'de uygulamayı açın
-2. Alt kısımdaki paylaş butonuna (⬆️) tıklayın
-3. "Ana Ekrana Ekle" seçeneğini seçin
-4. Uygulama adını onaylayın ve "Ekle" butonuna tıklayın
+### 🍴 Yemek Modülü
+- **AI Önerileri**: ChatGPT entegrasyonu ile akıllı yemek önerileri
+- **Pantry Yönetimi**: Mutfak malzemelerinizi takip edin
+- **Tarifler**: Favori tariflerinizi kaydedin
+- **Haftalık Planlama**: Öğün planlarınızı organize edin
+- **Alışveriş Listesi**: Otomatik alışveriş listesi oluşturma
 
-### 3. Bildirim İzinleri
-
-1. Ana ekrandan uygulamayı açın
-2. Ayarlar > Bildirimler bölümüne gidin
-3. "Bildirimleri etkinleştir" seçeneğini açın
-4. Tarayıcı bildirim izni isteyecek, "İzin Ver" seçin
-
-### 4. AI Entegrasyonu (Opsiyonel)
-
-1. Ayarlar > AI Entegrasyonu bölümüne gidin
-2. OpenAI API anahtarınızı girin (sk- ile başlayan)
-3. Anahtarınız cihazınızda güvenle saklanır
-
-## Özellikler
-
-### 🍽️ Yemek Modülü
-- **Kiler Yönetimi**: Ürün ekleme, barkod tarama, stok takibi
-- **Tarifler**: Tarif oluşturma ve yönetimi
-- **Haftalık Plan**: Otomatik yemek planı oluşturma
-- **Alışveriş Listesi**: Eksik malzemeleri otomatik listeleme
-- **AI Öneri**: ChatGPT ile kişiselleştirilmiş yemek önerileri
-
-### 💪 Spor Modülü
-- **Program Yönetimi**: Antrenman programları oluşturma
-- **Seans Takibi**: Antrenman süresi ve kalori takibi
-- **Streak Sistemi**: Günlük antrenman zinciri
-- **İstatistikler**: Detaylı performans analizi
+### 🏃‍♂️ Spor Modülü
+- **Egzersiz Takibi**: Günlük fiziksel aktivite kaydı
+- **Hedef Belirleme**: Kişisel fitness hedefleri
+- **İlerleme Takibi**: Performans analizi
+- **Hatırlatıcılar**: Egzersiz zamanı bildirimleri
 
 ### 🕌 Namaz Modülü
-- **Vakit Yönetimi**: Namaz vakitlerini planlama
-- **Hatırlatmalar**: Vakit yaklaşınca bildirim
-- **Kayıt Sistemi**: Namaz kılma takibi
-- **Takvim Entegrasyonu**: ICS dosyası dışa aktarma
+- **Vakit Takibi**: Günlük namaz vakitleri
+- **Hatırlatıcılar**: Namaz zamanı bildirimleri
+- **İlerleme**: Namaz kılma takibi
+- **Özel Ayarlar**: Konum bazlı vakit hesaplama
 
-### 📖 Ezber Modülü
-- **Hedef Belirleme**: Sure, ayet, hadis hedefleri
-- **Spaced Repetition**: Bilimsel tekrar sistemi
+### 📚 Ezber Modülü
+- **Sure Ezberleme**: Kuran surelerini takip edin
+- **Dua Ezberleme**: Günlük duaları öğrenin
 - **İlerleme Takibi**: Ezber durumu analizi
-- **Hatırlatmalar**: Düzenli tekrar bildirimleri
+- **Tekrar Sistemi**: Unutmayı önleyici tekrar programı
 
-### ⛓️ Zincir Modülü
-- **Alışkanlık Takibi**: "Don't Break The Chain" sistemi
-- **Takvim Görünümü**: Günlük tamamlama takibi
-- **Rozet Sistemi**: Başarı rozetleri ve ödüller
-- **Esneklik**: Haftalık hedef ayarlama
+### 🔗 Zincir Modülü
+- **Habit Tracking**: Alışkanlık takibi
+- **Zincir Kırma**: Süreklilik motivasyonu
+- **İstatistikler**: Detaylı analiz ve raporlar
+- **Hedefler**: Uzun vadeli alışkanlık hedefleri
 
-### ✅ ToDo + Takvim Modülü
-- **Günlük Görünüm**: Saat bazlı görev planlama
-- **Haftalık Görünüm**: Haftalık görev dağılımı
-- **Aylık Görünüm**: Aylık görev takvimi
-- **Yıllık Görünüm**: Yıllık planlama
-- **Modül Entegrasyonu**: Diğer modüllerle bağlantılı görevler
+### ✅ Todo/Calendar Modülü
+- **Görev Yönetimi**: Günlük, haftalık, aylık görevler
+- **Takvim Entegrasyonu**: Tarih bazlı planlama
+- **Öncelik Sistemi**: Acil ve önemli görevler
+- **Kategoriler**: İş, kişisel, sağlık kategorileri
 
-## Teknik Özellikler
+## 🛠️ Teknoloji Stack
 
+- **Frontend**: HTML5, CSS3, JavaScript ES6+
 - **PWA**: Progressive Web App desteği
-- **Offline**: İnternet bağlantısı olmadan çalışma
-- **Responsive**: Tüm cihazlarda uyumlu tasarım
-- **IndexedDB**: Yerel veri saklama
-- **Service Worker**: Arka plan işlemleri
-- **Push Notifications**: Bildirim sistemi
-- **SOLID Architecture**: Modüler ve genişletilebilir kod yapısı
+- **Storage**: IndexedDB ile offline veri saklama
+- **Caching**: Service Worker ile akıllı önbellekleme
+- **AI**: OpenAI ChatGPT API entegrasyonu
+- **Design**: Modern CSS Grid/Flexbox
+- **Icons**: Custom emoji ve icon sistemi
 
-## Veri Güvenliği
+## 📦 Kurulum
 
-- Tüm veriler cihazınızda saklanır
-- Hiçbir veri sunucuya gönderilmez
-- AI API anahtarı sadece cihazınızda saklanır
-- İsteğe bağlı dışa aktarım (JSON/ICS)
+### Yerel Geliştirme
+```bash
+# Repository'yi klonlayın
+git clone https://github.com/furkangunduz/FurkAI.git
+cd FurkAI
 
-## Geliştirme
+# Basit HTTP server başlatın
+python3 -m http.server 8000
 
-### Yeni Modül Ekleme
+# Tarayıcıda açın
+open http://localhost:8000
+```
 
-1. `js/modules/` klasöründe yeni modül dosyası oluşturun
-2. `BaseModule` sınıfından türetin
-3. `ModuleManager.registerModule()` ile kaydedin
-4. CSS stillerini `css/modules.css` dosyasına ekleyin
+### PWA Olarak Yükleme
+1. Tarayıcıda `index.html` dosyasını açın
+2. "Ana ekrana ekle" seçeneğini kullanın
+3. Uygulama ana ekranınızda görünecek
 
-### Yeni Özellik Ekleme
+## 🎯 Kullanım
 
-1. İlgili modül dosyasını düzenleyin
-2. Veri modelini `DataManager` ile uyumlu hale getirin
-3. UI bileşenlerini ekleyin
-4. Olay sistemini kullanarak modüller arası iletişim kurun
+### İlk Kullanım
+1. Uygulamayı açın
+2. Tutorial'ı takip edin
+3. Hazır rutinleri inceleyin
+4. Kendi rutinlerinizi oluşturun
 
-## Sorun Giderme
+### Rutin Oluşturma
+1. "Rutinler" sayfasına gidin
+2. "Yeni Rutin" butonuna tıklayın
+3. Kategori, sıklık, zaman belirleyin
+4. Hatırlatıcıları ayarlayın
+5. Rutini kaydedin
 
-### Bildirimler Çalışmıyor
-- Ana ekrandan uygulamayı açtığınızdan emin olun
-- Tarayıcı bildirim izinlerini kontrol edin
-- Ayarlar > Bildirimler bölümünden etkinleştirin
+### AI Yemek Önerileri
+1. "Yemek" modülüne gidin
+2. Mevcut malzemelerinizi girin
+3. AI'dan öneri isteyin
+4. Önerileri favorilerinize ekleyin
 
-### AI Önerileri Çalışmıyor
-- OpenAI API anahtarınızın doğru olduğundan emin olun
-- İnternet bağlantınızı kontrol edin
-- API kullanım limitlerinizi kontrol edin
+## 🔧 Geliştirme
 
-### Veriler Kayboldu
-- Tarayıcı verilerini temizlemediğinizden emin olun
-- IndexedDB desteğinin aktif olduğunu kontrol edin
-- Düzenli olarak verilerinizi dışa aktarın
+### Proje Yapısı
+```
+FurkAI/
+├── css/                 # Stil dosyaları
+│   ├── app.css         # Ana uygulama stilleri
+│   ├── components.css  # Bileşen stilleri
+│   ├── design-system.css # Tasarım sistemi
+│   └── modules.css     # Modül stilleri
+├── js/
+│   ├── core/           # Çekirdek sistemler
+│   │   ├── app.js      # Ana uygulama
+│   │   ├── data-manager.js # Veri yönetimi
+│   │   ├── event-system.js # Olay sistemi
+│   │   ├── module-manager.js # Modül yönetimi
+│   │   ├── page-manager.js # Sayfa yönetimi
+│   │   ├── tutorial-manager.js # Tutorial sistemi
+│   │   └── ai-service.js # AI servisleri
+│   └── modules/        # Uygulama modülleri
+│       ├── yemek.js    # Yemek modülü
+│       ├── spor.js     # Spor modülü
+│       ├── namaz.js    # Namaz modülü
+│       ├── ezber.js    # Ezber modülü
+│       ├── zincir.js   # Zincir modülü
+│       ├── todo.js     # Todo modülü
+│       └── rutinler.js # Rutinler modülü
+├── icons/              # PWA ikonları
+├── index.html          # Ana HTML dosyası
+├── manifest.json       # PWA manifest
+└── sw.js              # Service Worker
+```
 
-## Destek
+### Katkıda Bulunma
+1. Fork yapın
+2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
+3. Commit yapın (`git commit -m 'Add amazing feature'`)
+4. Push yapın (`git push origin feature/amazing-feature`)
+5. Pull Request oluşturun
 
-Sorunlarınız için GitHub Issues kullanabilir veya dokümantasyonu inceleyebilirsiniz.
+## 📄 Lisans
+
+Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakın.
+
+## 👨‍💻 Geliştirici
+
+**Furkan Gündüz**
+- GitHub: [@furkangunduz](https://github.com/furkangunduz)
+- Email: furkan@example.com
+
+## 🙏 Teşekkürler
+
+- OpenAI ChatGPT API
+- Modern CSS Grid/Flexbox
+- Progressive Web App standartları
+- Tüm açık kaynak kütüphaneler
+
+## 📈 Gelecek Planları
+
+- [ ] Hesap sistemi ve veri senkronizasyonu
+- [ ] Daha fazla AI entegrasyonu
+- [ ] Gelişmiş analitik ve raporlama
+- [ ] Sosyal özellikler ve paylaşım
+- [ ] Mobil uygulama versiyonu
+- [ ] Çoklu dil desteği
+
+---
+
+**FurkAI** - Günlük rutinlerinizi yönetmenin modern yolu! 🚀
