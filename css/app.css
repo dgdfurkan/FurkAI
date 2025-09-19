@@ -8,6 +8,7 @@
 html, body {
   overflow-x: hidden;
   height: 100%;
+  overscroll-behavior: none; /* Overscroll engelleme */
 }
 
 body {
@@ -24,6 +25,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overscroll-behavior: none; /* Overscroll engelleme */
   background: 
     radial-gradient(circle at 20% 80%, rgba(135, 206, 250, 0.2) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(144, 238, 144, 0.2) 0%, transparent 50%),
@@ -235,7 +237,7 @@ body {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   transition: all var(--transition-normal);
-  z-index: var(--z-fixed);
+  z-index: 999; /* Alt navigasyondan düşük */
 }
 
 .fab.show {
