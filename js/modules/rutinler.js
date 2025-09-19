@@ -23,6 +23,12 @@ class RutinlerModule {
       if (!this.rutinler || this.rutinler.length === 0) {
         console.log('Rutin bulunamadı, default rutinler oluşturuluyor...');
         await this.createDefaultRutinler();
+        // Rutinler oluşturulduktan sonra sayfayı yenile
+        setTimeout(() => {
+          if (document.getElementById('page-content')) {
+            this.render();
+          }
+        }, 100);
       } else {
         console.log('Mevcut rutinler yüklendi:', this.rutinler.length);
       }
@@ -145,6 +151,13 @@ class RutinlerModule {
       }
       
       console.log('Default rutinler oluşturuldu:', defaultRutinler.length);
+      
+      // Rutinler oluşturulduktan sonra sayfayı yenile
+      setTimeout(() => {
+        if (document.getElementById('page-content')) {
+          this.render();
+        }
+      }, 200);
     } catch (error) {
       console.error('Default rutinler oluşturulamadı:', error);
     }
