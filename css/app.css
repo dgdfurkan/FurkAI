@@ -19,9 +19,9 @@ body {
   line-height: var(--line-height-normal);
 }
 
-/* App Container - Full Height Layout */
+/* App Container - Normal Layout */
 .app-container {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: 
@@ -36,12 +36,10 @@ body {
       #87CEEB 100%);
 }
 
-/* Header - Always Fixed at Top */
+/* Header - Sticky at Top */
 .app-header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   background: rgba(15, 20, 25, 0.95);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 212, 255, 0.2);
@@ -134,25 +132,20 @@ body {
   padding-bottom: 80px; /* Bottom nav için alan */
 }
 
-/* Page Content - Scrollable Area */
+/* Page Content - Normal Padding */
 .page-content {
   flex: 1;
   padding: var(--space-6);
-  padding-top: calc(var(--space-6) + 80px); /* Space for fixed header */
-  padding-bottom: calc(var(--space-6) + 80px); /* Space for fixed bottom nav */
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  overflow-y: auto;
   overflow-x: hidden;
 }
 
-/* Bottom Navigation - Always Fixed at Bottom */
+/* Bottom Navigation - Sticky at Bottom */
 .bottom-nav {
-  position: fixed;
+  position: sticky;
   bottom: 0;
-  left: 0;
-  right: 0;
   background: rgba(26, 27, 35, 0.95);
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
