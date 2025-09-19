@@ -1,5 +1,23 @@
 /* FurkAI Modern App Styles */
 
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-primary);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+}
+
 /* App Container */
 .app-container {
   min-height: 100vh;
@@ -117,9 +135,11 @@
 .page-content {
   flex: 1;
   padding: var(--space-6);
+  padding-bottom: calc(var(--space-6) + 80px); /* Space for fixed bottom nav */
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Bottom Navigation */
