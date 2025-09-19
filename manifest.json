@@ -2,12 +2,12 @@
   "name": "FurkAI - Kişisel Asistan",
   "short_name": "FurkAI",
   "description": "Yemek, Spor, Namaz, Ezber ve günlük işlerinizi tek yerde yönetin",
-  "start_url": "/",
+  "start_url": "/FurkAI/",
   "display": "standalone",
   "background_color": "#1a1b23",
   "theme_color": "#1a1b23",
   "orientation": "portrait-primary",
-  "scope": "/",
+  "scope": "/FurkAI/",
   "lang": "tr",
   "categories": ["productivity", "lifestyle", "utilities"],
   "icons": [
@@ -65,21 +65,21 @@
       "name": "Haftalık Plan",
       "short_name": "Plan",
       "description": "Haftalık yemek planını görüntüle",
-      "url": "/?module=yemek&view=weekly",
+      "url": "/FurkAI/?module=yemek&view=weekly",
       "icons": [{ "src": "icons/shortcut-plan.png", "sizes": "96x96" }]
     },
     {
       "name": "Günlük Görevler",
       "short_name": "Görevler",
       "description": "Bugünkü görevleri görüntüle",
-      "url": "/?module=todo&view=daily",
+      "url": "/FurkAI/?module=todo&view=daily",
       "icons": [{ "src": "icons/shortcut-todo.png", "sizes": "96x96" }]
     },
     {
       "name": "Spor Programı",
       "short_name": "Spor",
       "description": "Spor programını görüntüle",
-      "url": "/?module=spor",
+      "url": "/FurkAI/?module=spor",
       "icons": [{ "src": "icons/shortcut-sport.png", "sizes": "96x96" }]
     }
   ],

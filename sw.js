@@ -1,26 +1,26 @@
 // Service Worker for FurkAI PWA
-const CACHE_NAME = 'furkai-v1.0.1';
+const CACHE_NAME = 'furkai-v1.0.2';
 const STATIC_CACHE_URLS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/css/design-system.css',
-  '/css/components.css',
-  '/css/modules.css',
-  '/css/app.css',
-  '/js/core/event-system.js',
-  '/js/core/data-manager.js',
-  '/js/core/module-manager.js',
-  '/js/core/notification-manager.js',
-  '/js/modules/yemek.js',
-  '/js/modules/spor.js',
-  '/js/modules/namaz.js',
-  '/js/modules/ezber.js',
-  '/js/modules/zincir.js',
-  '/js/modules/todo.js',
-  '/js/app.js',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  '/FurkAI/',
+  '/FurkAI/index.html',
+  '/FurkAI/manifest.json',
+  '/FurkAI/css/design-system.css',
+  '/FurkAI/css/components.css',
+  '/FurkAI/css/modules.css',
+  '/FurkAI/css/app.css',
+  '/FurkAI/js/core/event-system.js',
+  '/FurkAI/js/core/data-manager.js',
+  '/FurkAI/js/core/module-manager.js',
+  '/FurkAI/js/core/notification-manager.js',
+  '/FurkAI/js/modules/yemek.js',
+  '/FurkAI/js/modules/spor.js',
+  '/FurkAI/js/modules/namaz.js',
+  '/FurkAI/js/modules/ezber.js',
+  '/FurkAI/js/modules/zincir.js',
+  '/FurkAI/js/modules/todo.js',
+  '/FurkAI/js/app.js',
+  '/FurkAI/icons/icon-192x192.png',
+  '/FurkAI/icons/icon-512x512.png'
 ];
 
 // Install event - cache static assets
