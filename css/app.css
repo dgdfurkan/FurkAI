@@ -6,7 +6,8 @@
 }
 
 html, body {
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
+  height: 100%;
 }
 
 body {
@@ -18,9 +19,9 @@ body {
   line-height: var(--line-height-normal);
 }
 
-/* App Container */
+/* App Container - Full Height Layout */
 .app-container {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background: 
@@ -33,17 +34,18 @@ body {
       #98FB98 50%, 
       #B0E0E6 75%, 
       #87CEEB 100%);
-  position: relative;
 }
 
-/* Header Styles - Sticky */
+/* Header - Always Fixed at Top */
 .app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background: rgba(15, 20, 25, 0.95);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-  position: sticky;
-  top: 0;
-  z-index: var(--z-sticky);
+  z-index: 1000;
   padding: var(--space-4) 0;
 }
 
@@ -132,18 +134,22 @@ body {
   padding-bottom: 80px; /* Bottom nav için alan */
 }
 
+/* Page Content - Scrollable Area */
 .page-content {
   flex: 1;
   padding: var(--space-6);
+  padding-top: calc(var(--space-6) + 80px); /* Space for fixed header */
+  padding-bottom: calc(var(--space-6) + 80px); /* Space for fixed bottom nav */
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-/* Bottom Navigation - Sticky */
+/* Bottom Navigation - Always Fixed at Bottom */
 .bottom-nav {
-  position: sticky;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
@@ -153,7 +159,7 @@ body {
   display: flex;
   padding: var(--space-2) var(--space-4);
   gap: var(--space-2);
-  z-index: var(--z-sticky);
+  z-index: 1000;
 }
 
 .nav-item {
