@@ -139,6 +139,24 @@ class RutinlerModule {
         streak: 0,
         lastCompleted: null,
         isDefault: true
+      },
+      {
+        id: 'sureler-rutini',
+        name: 'Sureler',
+        description: 'Kur\'an-ı Kerim surelerini okuyun, ezberleyin ve anlayın',
+        category: 'sureler',
+        frequency: 'daily',
+        time: '20:00',
+        days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
+        reminder: true,
+        goal: 'Kur\'an okuma ve ezberleme alışkanlığı',
+        isActive: true,
+        createdAt: new Date().toISOString(),
+        completedCount: 0,
+        totalDays: 0,
+        streak: 0,
+        lastCompleted: null,
+        isDefault: true
       }
     ];
 
@@ -759,6 +777,9 @@ window.RutinlerModule.openRutinDetail = function(rutinId) {
       break;
     case 'zincir':
       window.RutinlerModule.openZincirRutini(rutin);
+      break;
+    case 'sureler':
+      window.RutinlerModule.openSurelerRutini(rutin);
       break;
     default:
       window.RutinlerModule.showRutinDetail(rutinId);
@@ -1626,6 +1647,195 @@ window.RutinlerModule.openZincirRutini = function(rutin) {
           <button class="btn btn-secondary" onclick="window.RutinlerModule?.addAlternativeActivity()">
             <span class="icon">➕</span>
             Alternatif Ekle
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
+
+// Sureler rutini detay sayfası
+window.RutinlerModule.openSurelerRutini = function(rutin) {
+  const content = document.getElementById("page-content");
+  if (!content) return;
+
+  content.innerHTML = `
+    <div class="rutin-detail-container">
+      <div class="rutin-detail-header">
+        <button class="btn btn-secondary" onclick="window.PageManager?.switchPage('routines')">
+          ← Geri
+        </button>
+        <h2>📖 ${rutin.name}</h2>
+        <div class="rutin-status-badge ${rutin.isActive ? 'active' : 'inactive'}">
+          ${rutin.isActive ? 'Aktif' : 'Pasif'}
+        </div>
+      </div>
+
+      <div class="rutin-detail-content">
+        <div class="dashboard-grid">
+          <!-- Bugünkü Okuma -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Bugünkü Okuma</h3>
+              <span class="card-icon">📖</span>
+            </div>
+            <div class="card-content">
+              <div class="reading-list">
+                <div class="reading-item">
+                  <span class="surah-name">Fatiha Suresi</span>
+                  <span class="reading-status">✅</span>
+                </div>
+                <div class="reading-item">
+                  <span class="surah-name">Bakara 1-10</span>
+                  <span class="reading-status">⏰</span>
+                </div>
+                <div class="reading-item">
+                  <span class="surah-name">İhlas Suresi</span>
+                  <span class="reading-status">✅</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Okuma İlerlemesi -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Okuma İlerlemesi</h3>
+              <span class="card-icon">📊</span>
+            </div>
+            <div class="card-content">
+              <div class="reading-progress">
+                <div class="progress-circle">
+                  <span class="progress-current">25</span>
+                  <span class="progress-target">/ 114</span>
+                </div>
+                <div class="progress-info">
+                  <p>Okunan: 25 sure</p>
+                  <p>Hedef: 114 sure</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sure Listesi -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Sure Listesi</h3>
+              <span class="card-icon">📋</span>
+            </div>
+            <div class="card-content">
+              <div class="surah-list">
+                <div class="surah-item" onclick="window.RutinlerModule?.openSurahDetail(1)">
+                  <span class="surah-number">1</span>
+                  <span class="surah-name">Fatiha</span>
+                  <span class="surah-status">✅</span>
+                </div>
+                <div class="surah-item" onclick="window.RutinlerModule?.openSurahDetail(2)">
+                  <span class="surah-number">2</span>
+                  <span class="surah-name">Bakara</span>
+                  <span class="surah-status">⏰</span>
+                </div>
+                <div class="surah-item" onclick="window.RutinlerModule?.openSurahDetail(112)">
+                  <span class="surah-number">112</span>
+                  <span class="surah-name">İhlas</span>
+                  <span class="surah-status">✅</span>
+                </div>
+                <div class="surah-item" onclick="window.RutinlerModule?.openSurahDetail(113)">
+                  <span class="surah-number">113</span>
+                  <span class="surah-name">Felak</span>
+                  <span class="surah-status">⏰</span>
+                </div>
+                <div class="surah-item" onclick="window.RutinlerModule?.openSurahDetail(114)">
+                  <span class="surah-number">114</span>
+                  <span class="surah-name">Nas</span>
+                  <span class="surah-status">⏰</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Okuma İstatistikleri -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">İstatistikler</h3>
+              <span class="card-icon">📈</span>
+            </div>
+            <div class="card-content">
+              <div class="reading-stats">
+                <div class="stat-item">
+                  <span class="stat-value">25</span>
+                  <span class="stat-label">Okunan</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">7</span>
+                  <span class="stat-label">Gün</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">92%</span>
+                  <span class="stat-label">Başarı</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Okuma Rehberi -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Okuma Rehberi</h3>
+              <span class="card-icon">💡</span>
+            </div>
+            <div class="card-content">
+              <div class="reading-tips">
+                <div class="tip-item">
+                  <span class="tip-icon">🎯</span>
+                  <span class="tip-text">Günde 1-2 sure okuyun</span>
+                </div>
+                <div class="tip-item">
+                  <span class="tip-icon">📖</span>
+                  <span class="tip-text">Anlamını öğrenin</span>
+                </div>
+                <div class="tip-item">
+                  <span class="tip-icon">🔄</span>
+                  <span class="tip-text">Düzenli tekrar yapın</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Favori Sureler -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Favori Sureler</h3>
+              <span class="card-icon">⭐</span>
+            </div>
+            <div class="card-content">
+              <div class="favorite-surahs">
+                <div class="favorite-item">
+                  <span class="favorite-icon">⭐</span>
+                  <span class="favorite-name">Fatiha</span>
+                </div>
+                <div class="favorite-item">
+                  <span class="favorite-icon">⭐</span>
+                  <span class="favorite-name">İhlas</span>
+                </div>
+                <div class="favorite-item">
+                  <span class="favorite-icon">⭐</span>
+                  <span class="favorite-name">Felak</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rutin-actions">
+          <button class="btn btn-primary" onclick="window.RutinlerModule?.startReading()">
+            <span class="icon">▶️</span>
+            Okumaya Başla
+          </button>
+          <button class="btn btn-secondary" onclick="window.RutinlerModule?.markAsRead()">
+            <span class="icon">✅</span>
+            Okundu Olarak İşaretle
           </button>
         </div>
       </div>

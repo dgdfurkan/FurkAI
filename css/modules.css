@@ -1935,9 +1935,131 @@ input:checked + .toggle-slider:before {
   border: none;
 }
 
-.btn-danger:hover {
-  background: #dc2626;
-  transform: translateY(-1px);
+/* Sureler Rutini Özel Stiller */
+.reading-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.reading-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.surah-name {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.reading-status {
+  font-size: var(--font-size-lg);
+}
+
+.reading-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.reading-progress .progress-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: conic-gradient(var(--color-accent) 0deg 79deg, var(--color-bg-tertiary) 79deg 360deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.reading-progress .progress-circle::before {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: var(--color-bg-primary);
+  border-radius: 50%;
+}
+
+.reading-progress .progress-current {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  z-index: 1;
+}
+
+.reading-progress .progress-target {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  z-index: 1;
+}
+
+.reading-progress .progress-info p {
+  margin: var(--space-1) 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.reading-stats {
+  display: flex;
+  justify-content: space-around;
+}
+
+.reading-tips {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.reading-tips .tip-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-accent-secondary);
+}
+
+.reading-tips .tip-icon {
+  font-size: var(--font-size-lg);
+}
+
+.reading-tips .tip-text {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.favorite-surahs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.favorite-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-accent);
+}
+
+.favorite-icon {
+  font-size: var(--font-size-lg);
+}
+
+.favorite-name {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
 }
 
 .rutinler-header {
