@@ -1,0 +1,118 @@
+{
+  "themes": [
+    {
+      "id": "modern-blue",
+      "name": "Modern Mavi",
+      "description": "Açık mavi-yeşil gradient arkaplan, beyaz kartlar",
+      "colors": {
+        "primary": "#3B82F6",
+        "secondary": "#10B981",
+        "accent": "#F59E0B",
+        "accent-secondary": "#EF4444",
+        "background": "linear-gradient(135deg, #E0F2FE 0%, #F0FDF4 50%, #E0F2FE 100%)",
+        "surface": "rgba(255, 255, 255, 0.9)",
+        "surface-secondary": "rgba(255, 255, 255, 0.7)",
+        "text-primary": "#1F2937",
+        "text-secondary": "#6B7280",
+        "border": "rgba(59, 130, 246, 0.2)",
+        "shadow": "rgba(0, 0, 0, 0.1)"
+      },
+      "isDefault": true
+    },
+    {
+      "id": "dark-purple",
+      "name": "Koyu Mor",
+      "description": "Koyu mor gradient arkaplan, koyu kartlar",
+      "colors": {
+        "primary": "#8B5CF6",
+        "secondary": "#EC4899",
+        "accent": "#F59E0B",
+        "accent-secondary": "#EF4444",
+        "background": "linear-gradient(135deg, #1E1B4B 0%, #581C87 50%, #1E1B4B 100%)",
+        "surface": "rgba(30, 27, 75, 0.9)",
+        "surface-secondary": "rgba(30, 27, 75, 0.7)",
+        "text-primary": "#F9FAFB",
+        "text-secondary": "#D1D5DB",
+        "border": "rgba(139, 92, 246, 0.3)",
+        "shadow": "rgba(0, 0, 0, 0.3)"
+      },
+      "isDefault": false
+    },
+    {
+      "id": "sunset-orange",
+      "name": "Gün Batımı Turuncu",
+      "description": "Turuncu-kırmızı gradient arkaplan, sıcak tonlar",
+      "colors": {
+        "primary": "#F97316",
+        "secondary": "#EF4444",
+        "accent": "#F59E0B",
+        "accent-secondary": "#8B5CF6",
+        "background": "linear-gradient(135deg, #FED7AA 0%, #FECACA 50%, #FED7AA 100%)",
+        "surface": "rgba(255, 255, 255, 0.9)",
+        "surface-secondary": "rgba(255, 255, 255, 0.7)",
+        "text-primary": "#1F2937",
+        "text-secondary": "#6B7280",
+        "border": "rgba(249, 115, 22, 0.2)",
+        "shadow": "rgba(0, 0, 0, 0.1)"
+      },
+      "isDefault": false
+    },
+    {
+      "id": "forest-green",
+      "name": "Orman Yeşili",
+      "description": "Yeşil tonları, doğal görünüm",
+      "colors": {
+        "primary": "#059669",
+        "secondary": "#0D9488",
+        "accent": "#F59E0B",
+        "accent-secondary": "#EF4444",
+        "background": "linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 50%, #D1FAE5 100%)",
+        "surface": "rgba(255, 255, 255, 0.9)",
+        "surface-secondary": "rgba(255, 255, 255, 0.7)",
+        "text-primary": "#1F2937",
+        "text-secondary": "#6B7280",
+        "border": "rgba(5, 150, 105, 0.2)",
+        "shadow": "rgba(0, 0, 0, 0.1)"
+      },
+      "isDefault": false
+    },
+    {
+      "id": "ocean-blue",
+      "name": "Okyanus Mavisi",
+      "description": "Derin mavi tonları, okyanus teması",
+      "colors": {
+        "primary": "#0EA5E9",
+        "secondary": "#06B6D4",
+        "accent": "#F59E0B",
+        "accent-secondary": "#EF4444",
+        "background": "linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 50%, #E0F2FE 100%)",
+        "surface": "rgba(255, 255, 255, 0.9)",
+        "surface-secondary": "rgba(255, 255, 255, 0.7)",
+        "text-primary": "#1F2937",
+        "text-secondary": "#6B7280",
+        "border": "rgba(14, 165, 233, 0.2)",
+        "shadow": "rgba(0, 0, 0, 0.1)"
+      },
+      "isDefault": false
+    },
+    {
+      "id": "midnight-dark",
+      "name": "Gece Yarısı",
+      "description": "Koyu tema, göz yormayan",
+      "colors": {
+        "primary": "#6366F1",
+        "secondary": "#8B5CF6",
+        "accent": "#F59E0B",
+        "accent-secondary": "#EF4444",
+        "background": "linear-gradient(135deg, #111827 0%, #1F2937 50%, #111827 100%)",
+        "surface": "rgba(31, 41, 55, 0.9)",
+        "surface-secondary": "rgba(31, 41, 55, 0.7)",
+        "text-primary": "#F9FAFB",
+        "text-secondary": "#D1D5DB",
+        "border": "rgba(99, 102, 241, 0.3)",
+        "shadow": "rgba(0, 0, 0, 0.3)"
+      },
+      "isDefault": false
+    }
+  ]
+}

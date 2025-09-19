@@ -1,5 +1,5 @@
 // Service Worker for FurkAI PWA
-const CACHE_NAME = 'furkai-v1.0.3';
+const CACHE_NAME = 'furkai-v1.0.4';
 const STATIC_CACHE_URLS = [
   '/FurkAI/',
   '/FurkAI/index.html',
@@ -27,7 +27,8 @@ const STATIC_CACHE_URLS = [
   '/FurkAI/data/exercises.json',
   '/FurkAI/data/nutrition.json',
   '/FurkAI/data/prayer.json',
-  '/FurkAI/data/habits.json'
+  '/FurkAI/data/habits.json',
+  '/FurkAI/data/themes.json'
 ];
 
 // Install event - cache static assets

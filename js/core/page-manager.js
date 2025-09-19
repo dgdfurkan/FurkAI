@@ -98,6 +98,11 @@ class PageManager {
     if (this.pages[pageName]) {
       try {
         content.innerHTML = await this.pages[pageName]();
+        
+        // Sayfa özel işlemler
+        if (pageName === 'settings') {
+          await this.loadThemeSelector();
+        }
       } catch (error) {
         console.error('Sayfa yüklenirken hata:', error);
         content.innerHTML = `
@@ -109,6 +114,36 @@ class PageManager {
         `;
       }
     }
+  }
+
+  async loadThemeSelector() {
+    const themeGrid = document.getElementById('theme-grid');
+    if (!themeGrid || !window.ThemeManager) return;
+
+    const themes = window.ThemeManager.getAllThemes();
+    const currentTheme = window.ThemeManager.getCurrentTheme();
+    
+    themeGrid.innerHTML = themes.map(theme => `
+      <div class="theme-card ${theme.id === currentTheme.id ? 'active' : ''}" 
+           onclick="window.ThemeManager?.setTheme('${theme.id}')"
+           onmouseover="window.ThemeManager?.previewTheme('${theme.id}')"
+           onmouseout="window.ThemeManager?.resetPreview()">
+        <div class="theme-preview" style="background: ${theme.colors.background}">
+          <div class="theme-preview-card" style="background: ${theme.colors.surface}; color: ${theme.colors.textPrimary}">
+            <div class="theme-preview-header" style="background: ${theme.colors.primary}"></div>
+            <div class="theme-preview-content">
+              <div class="theme-preview-line" style="background: ${theme.colors.textSecondary}"></div>
+              <div class="theme-preview-line" style="background: ${theme.colors.textSecondary}"></div>
+            </div>
+          </div>
+        </div>
+        <div class="theme-info">
+          <h4 class="theme-name">${theme.name}</h4>
+          <p class="theme-description">${theme.description}</p>
+          ${theme.id === currentTheme.id ? '<span class="theme-badge">Aktif</span>' : ''}
+        </div>
+      </div>
+    `).join('');
   }
 
   createHomePage() {
@@ -293,33 +328,106 @@ class PageManager {
 
   createSettingsPage() {
     return `
-      <div class="dashboard-card">
-        <div class="card-header">
-          <h3 class="card-title">Ayarlar</h3>
-          <span class="card-icon">⚙️</span>
+      <div class="settings-container">
+        <div class="settings-section">
+          <h3 class="settings-title">🎨 Tema Ayarları</h3>
+          <div class="theme-selector">
+            <div class="theme-grid" id="theme-grid">
+              <!-- Temalar dinamik olarak yüklenecek -->
+            </div>
+          </div>
         </div>
-        <div class="card-content">
-          <p>Uygulama ayarlarınızı yönetin</p>
-        </div>
-      </div>
 
-      <div class="quick-actions">
-        <a href="#" class="quick-action" onclick="this.showSettingsModal()">
-          <span class="quick-action-icon">🔔</span>
-          <span class="quick-action-label">Bildirimler</span>
-        </a>
-        <a href="#" class="quick-action" onclick="this.showSettingsModal()">
-          <span class="quick-action-icon">🎨</span>
-          <span class="quick-action-label">Tema</span>
-        </a>
-        <a href="#" class="quick-action" onclick="this.showSettingsModal()">
-          <span class="quick-action-icon">🤖</span>
-          <span class="quick-action-label">AI Ayarları</span>
-        </a>
-        <a href="#" class="quick-action" onclick="this.showProfile()">
-          <span class="quick-action-icon">👨‍💼</span>
-          <span class="quick-action-label">Profil</span>
-        </a>
+        <div class="settings-section">
+          <h3 class="settings-title">🔔 Bildirim Ayarları</h3>
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Namaz Hatırlatıcıları</span>
+              <span class="setting-description">Namaz vakitlerinde bildirim al</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="prayer-notifications" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Rutin Hatırlatıcıları</span>
+              <span class="setting-description">Günlük rutinler için bildirim</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="routine-notifications" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3 class="settings-title">🤖 AI Ayarları</h3>
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Yemek Önerileri</span>
+              <span class="setting-description">AI ile yemek önerisi al</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="ai-meal-suggestions" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">API Anahtarı</span>
+              <span class="setting-description">OpenAI API anahtarınız</span>
+            </div>
+            <input type="password" id="openai-api-key" placeholder="sk-..." class="api-key-input">
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3 class="settings-title">👨‍💼 Profil Ayarları</h3>
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Kullanıcı Adı</span>
+              <span class="setting-description">Profil kullanıcı adınız</span>
+            </div>
+            <input type="text" id="username" placeholder="Kullanıcı adınız" class="text-input">
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Güvenlik Kelimeleri</span>
+              <span class="setting-description">Şifre kurtarma için</span>
+            </div>
+            <button class="btn btn-secondary" onclick="window.SettingsManager?.showSecurityWords()">
+              Güvenlik Kelimeleri
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3 class="settings-title">📊 Veri Yönetimi</h3>
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Verileri Yedekle</span>
+              <span class="setting-description">Tüm verilerinizi indirin</span>
+            </div>
+            <button class="btn btn-secondary" onclick="window.SettingsManager?.exportData()">
+              Yedekle
+            </button>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Verileri Temizle</span>
+              <span class="setting-description">Tüm verileri silin</span>
+            </div>
+            <button class="btn btn-danger" onclick="window.SettingsManager?.clearAllData()">
+              Temizle
+            </button>
+          </div>
+        </div>
       </div>
     `;
   }
