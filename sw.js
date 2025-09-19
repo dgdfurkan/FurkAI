@@ -19,6 +19,7 @@ const STATIC_CACHE_URLS = [
   '/FurkAI/js/modules/zincir.js',
   '/FurkAI/js/modules/todo.js',
   '/FurkAI/js/app.js',
+  '/FurkAI/icons/logo.png',
   '/FurkAI/icons/icon-192x192.png',
   '/FurkAI/icons/icon-512x512.png'
 ];
