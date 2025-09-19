@@ -363,7 +363,7 @@ class RutinlerModule {
 
   renderRutinler() {
     return this.rutinler.map(rutin => `
-      <div class="rutin-card" data-rutin-id="${rutin.id}">
+      <div class="rutin-card" data-rutin-id="${rutin.id}" onclick="window.RutinlerModule?.openRutinDetail('${rutin.id}')">
         <div class="rutin-card-header">
           <div class="rutin-icon">${this.getCategoryIcon(rutin.category)}</div>
           <div class="rutin-info">
@@ -736,4 +736,151 @@ window.RutinlerModule.clearAllCache = async function() {
   
   console.log('Cache temizleme tamamlandı! Sayfayı yenileyin.');
   alert('Cache temizlendi! Sayfayı yenileyin.');
+};
+
+// Rutin detay sayfasını aç
+window.RutinlerModule.openRutinDetail = function(rutinId) {
+  const rutin = window.RutinlerModule.rutinler.find(r => r.id == rutinId);
+  if (!rutin) return;
+
+  // Rutin türüne göre farklı sayfalar aç
+  switch(rutin.category) {
+    case 'yemek':
+      window.RutinlerModule.openYemekRutini(rutin);
+      break;
+    case 'spor':
+      window.RutinlerModule.openSporRutini(rutin);
+      break;
+    case 'namaz':
+      window.RutinlerModule.openNamazRutini(rutin);
+      break;
+    case 'ezber':
+      window.RutinlerModule.openEzberRutini(rutin);
+      break;
+    case 'zincir':
+      window.RutinlerModule.openZincirRutini(rutin);
+      break;
+    default:
+      window.RutinlerModule.showRutinDetail(rutinId);
+  }
+};
+
+// Yemek rutini detay sayfası
+window.RutinlerModule.openYemekRutini = function(rutin) {
+  const content = document.getElementById('page-content');
+  if (!content) return;
+
+  content.innerHTML = `
+    <div class="rutin-detail-container">
+      <div class="rutin-detail-header">
+        <button class="btn btn-secondary" onclick="window.PageManager?.switchPage('routines')">
+          ← Geri
+        </button>
+        <h2>🍴 ${rutin.name}</h2>
+        <div class="rutin-status-badge ${rutin.isActive ? 'active' : 'inactive'}">
+          ${rutin.isActive ? 'Aktif' : 'Pasif'}
+        </div>
+      </div>
+
+      <div class="rutin-detail-content">
+        <div class="dashboard-grid">
+          <!-- Bugünkü Öğünler -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Bugünkü Öğünler</h3>
+              <span class="card-icon">🍽️</span>
+            </div>
+            <div class="card-content">
+              <div class="meal-list">
+                <div class="meal-item">
+                  <span class="meal-time">08:00</span>
+                  <span class="meal-name">Kahvaltı</span>
+                  <span class="meal-status">✅</span>
+                </div>
+                <div class="meal-item">
+                  <span class="meal-time">13:00</span>
+                  <span class="meal-name">Öğle Yemeği</span>
+                  <span class="meal-status">⏰</span>
+                </div>
+                <div class="meal-item">
+                  <span class="meal-time">19:00</span>
+                  <span class="meal-name">Akşam Yemeği</span>
+                  <span class="meal-status">⏰</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kalori Takibi -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Kalori Takibi</h3>
+              <span class="card-icon">🔥</span>
+            </div>
+            <div class="card-content">
+              <div class="calorie-progress">
+                <div class="calorie-circle">
+                  <span class="calorie-current">850</span>
+                  <span class="calorie-target">/ 2000</span>
+                </div>
+                <div class="calorie-info">
+                  <p>Hedef: 2000 kalori</p>
+                  <p>Kalan: 1150 kalori</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Su Takibi -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">Su Takibi</h3>
+              <span class="card-icon">💧</span>
+            </div>
+            <div class="card-content">
+              <div class="water-progress">
+                <div class="water-glasses">
+                  ${Array(8).fill(0).map((_, i) => 
+                    `<div class="water-glass ${i < 3 ? 'filled' : ''}">💧</div>`
+                  ).join('')}
+                </div>
+                <p>3 / 8 bardak</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Öneriler -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">AI Öneriler</h3>
+              <span class="card-icon">🤖</span>
+            </div>
+            <div class="card-content">
+              <div class="ai-suggestions">
+                <div class="suggestion-item">
+                  <span class="suggestion-icon">🥗</span>
+                  <span class="suggestion-text">Öğle yemeği için salata önerisi</span>
+                </div>
+                <div class="suggestion-item">
+                  <span class="suggestion-icon">💧</span>
+                  <span class="suggestion-text">Daha fazla su içmeyi unutmayın</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rutin-actions">
+          <button class="btn btn-primary" onclick="window.RutinlerModule?.addMeal()">
+            <span class="icon">+</span>
+            Öğün Ekle
+          </button>
+          <button class="btn btn-secondary" onclick="window.RutinlerModule?.getAIRecommendation()">
+            <span class="icon">🤖</span>
+            AI Önerisi Al
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
 };
